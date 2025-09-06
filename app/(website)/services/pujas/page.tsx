@@ -215,15 +215,15 @@ export default function Pujas() {
           <div className="flex flex-wrap justify-center gap-6 text-sm opacity-90">
             <div className="flex items-center gap-2">
               <span className="text-2xl">🕉️</span>
-              <span>Authentic Rituals</span>
+              <span>{t('pujas.hero.features.authenticRituals', 'Authentic Rituals')}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-2xl">🙏</span>
-              <span>Expert Pandits</span>
+              <span>{t('pujas.hero.features.expertPandits', 'Expert Pandits')}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-2xl">✨</span>
-              <span>Spiritual Benefits</span>
+              <span>{t('pujas.hero.features.spiritualBenefits', 'Spiritual Benefits')}</span>
             </div>
           </div>
         </div>
@@ -297,20 +297,20 @@ export default function Pujas() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="bg-white rounded-3xl p-8 shadow-2xl border border-orange-100">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-800 mb-2">🔍 Find Your Perfect Puja</h2>
-              <p className="text-gray-600">Filter by category, location and search</p>
+              <h2 className="text-3xl font-bold text-gray-800 mb-2">{t('pujas.search.title', '🔍 Find Your Perfect Puja')}</h2>
+              <p className="text-gray-600">{t('pujas.search.subtitle', 'Filter by category, location and search')}</p>
             </div>
             
             <div className="grid md:grid-cols-4 gap-6 mb-8">
               <div>
                 <label className="text-sm font-semibold text-gray-700 mb-3 flex items-center">
                   <Search className="w-4 h-4 mr-2 text-orange-600" />
-                  Search Pujas
+                  {t('pujas.search.labels.search', 'Search Pujas')}
                 </label>
                 <div className="relative">
                   <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                   <Input
-                    placeholder="Search puja, deity, or category..."
+                    placeholder={t('pujas.search.placeholders.search', 'Search puja, deity, or category...')}
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="pl-12 py-3 border-2 border-orange-200 focus:border-orange-400 rounded-xl"
@@ -321,14 +321,14 @@ export default function Pujas() {
               <div>
                 <label className="text-sm font-semibold text-gray-700 mb-3 flex items-center">
                   <Flame className="w-4 h-4 mr-2 text-orange-600" />
-                  Category
+                  {t('pujas.search.labels.category', 'Category')}
                 </label>
                 <Select value={selectedCategory} onValueChange={setSelectedCategory}>
                   <SelectTrigger className="py-3 border-2 border-orange-200 focus:border-orange-400 rounded-xl">
-                    <SelectValue placeholder="Select Category" />
+                    <SelectValue placeholder={t('pujas.search.placeholders.category', 'Select Category')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Categories</SelectItem>
+                    <SelectItem value="all">{t('pujas.search.options.allCategories', 'All Categories')}</SelectItem>
                     {categories.map((category) => (
                       <SelectItem key={category} value={category}>
                         {category}
@@ -340,14 +340,14 @@ export default function Pujas() {
               
               <div>
                 <label className="text-sm font-semibold text-gray-700 mb-3 flex items-center">
-                  📍 Location
+                  📍 {t('pujas.search.labels.location', 'Location')}
                 </label>
                 <Select value={location} onValueChange={setLocation}>
                   <SelectTrigger className="py-3 border-2 border-orange-200 focus:border-orange-400 rounded-xl">
-                    <SelectValue placeholder="Select Location" />
+                    <SelectValue placeholder={t('pujas.search.placeholders.location', 'Select Location')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Locations</SelectItem>
+                    <SelectItem value="all">{t('pujas.search.options.allLocations', 'All Locations')}</SelectItem>
                     {locations.map((loc) => (
                       <SelectItem key={loc} value={loc}>
                         {loc}
@@ -359,18 +359,18 @@ export default function Pujas() {
             
               <div>
                 <label className="text-sm font-semibold text-gray-700 mb-3 flex items-center">
-                  📊 Sort By
+                  📊 {t('pujas.search.labels.sortBy', 'Sort By')}
                 </label>
                 <Select value={sortBy} onValueChange={setSortBy}>
                   <SelectTrigger className="py-3 border-2 border-orange-200 focus:border-orange-400 rounded-xl">
-                    <SelectValue placeholder="Sort By" />
+                    <SelectValue placeholder={t('pujas.search.placeholders.sortBy', 'Sort By')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="popularity">Most Popular</SelectItem>
-                    <SelectItem value="price-low">Price: Low to High</SelectItem>
-                    <SelectItem value="price-high">Price: High to Low</SelectItem>
-                    <SelectItem value="rating">Highest Rated</SelectItem>
-                    <SelectItem value="newest">Newest First</SelectItem>
+                    <SelectItem value="popularity">{t('pujas.search.sortOptions.popularity', 'Most Popular')}</SelectItem>
+                    <SelectItem value="price-low">{t('pujas.search.sortOptions.priceLow', 'Price: Low to High')}</SelectItem>
+                    <SelectItem value="price-high">{t('pujas.search.sortOptions.priceHigh', 'Price: High to Low')}</SelectItem>
+                    <SelectItem value="rating">{t('pujas.search.sortOptions.rating', 'Highest Rated')}</SelectItem>
+                    <SelectItem value="newest">{t('pujas.search.sortOptions.newest', 'Newest First')}</SelectItem>
                   </SelectContent>
                 </Select>
           </div>
@@ -383,31 +383,31 @@ export default function Pujas() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Available Puja Services</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">{t('pujas.collection.title', 'Available Puja Services')}</h2>
             {loading ? (
-              <p className="text-gray-600">Loading pujas...</p>
+              <p className="text-gray-600">{t('pujas.collection.loading', 'Loading pujas...')}</p>
             ) : error ? (
               <p className="text-red-600">{error}</p>
             ) : (
-            <p className="text-gray-600">{filteredPujas.length} pujas found</p>
+            <p className="text-gray-600">{t('pujas.collection.count', `${filteredPujas.length} pujas found`)}</p>
             )}
           </div>
           
           {loading ? (
             <div className="text-center py-20">
               <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-orange-500 mx-auto mb-4"></div>
-              <p className="text-gray-600 text-lg">Loading pujas...</p>
+              <p className="text-gray-600 text-lg">{t('pujas.collection.loading', 'Loading pujas...')}</p>
             </div>
           ) : error ? (
             <div className="text-center py-20">
               <div className="text-red-500 text-6xl mb-4">⚠️</div>
-              <h3 className="text-2xl font-bold mb-2 text-red-600">Failed to Load Pujas</h3>
+              <h3 className="text-2xl font-bold mb-2 text-red-600">{t('pujas.collection.error.title', 'Failed to Load Pujas')}</h3>
               <p className="text-gray-600 mb-6">{error}</p>
               <Button 
                 onClick={fetchPujas}
                 className="bg-orange-500 hover:bg-orange-600"
               >
-                Try Again
+                {t('pujas.collection.error.retry', 'Try Again')}
               </Button>
             </div>
           ) : (
@@ -460,22 +460,22 @@ export default function Pujas() {
                     <div className="space-y-3 mb-4 text-sm">
                       <div className="flex items-center">
                         <Clock className="w-4 h-4 mr-2 text-orange-500" />
-                        <span className="text-gray-700 font-medium">Duration: {puja.duration}</span>
+                        <span className="text-gray-700 font-medium">{t('pujas.labels.duration', 'Duration')}: {puja.duration}</span>
                       </div>
                       <div className="flex items-center">
                         <Users className="w-4 h-4 mr-2 text-orange-500" />
-                        <span className="text-gray-700 font-medium">Max: {puja.maxParticipants} people</span>
+                        <span className="text-gray-700 font-medium">{t('pujas.labels.maxParticipants', 'Max')}: {puja.maxParticipants} people</span>
                       </div>
                       <div className="flex items-center">
                         <MapPin className="w-4 h-4 mr-2 text-orange-500" />
-                        <span className="text-gray-700 font-medium">Location: {puja.location}</span>
+                        <span className="text-gray-700 font-medium">{t('pujas.labels.location', 'Location')}: {puja.location}</span>
                     </div>
                   </div>
                   
                     {/* Benefits */}
                     {puja.benefits && puja.benefits.length > 0 && (
                   <div className="mb-4">
-                        <h4 className="font-semibold mb-2 text-green-600 text-sm">🔹 Benefits:</h4>
+                        <h4 className="font-semibold mb-2 text-green-600 text-sm">🔹 {t('pujas.labels.benefits', 'Benefits:')}</h4>
                         <div className="flex flex-wrap gap-1">
                       {puja.benefits.slice(0, 3).map((benefit, index) => (
                         <Badge key={index} variant="secondary" className="text-xs">
@@ -494,7 +494,7 @@ export default function Pujas() {
                     {/* Requirements */}
                     {puja.requirements && puja.requirements.length > 0 && (
                       <div className="mb-6">
-                        <h4 className="font-semibold mb-2 text-blue-600 text-sm">🔹 Includes:</h4>
+                        <h4 className="font-semibold mb-2 text-blue-600 text-sm">🔹 {t('pujas.labels.includes', 'Includes:')}</h4>
                         <div className="flex flex-wrap gap-1">
                           {puja.requirements.slice(0, 3).map((item, index) => (
                         <Badge key={index} variant="outline" className="text-xs">
@@ -529,16 +529,16 @@ export default function Pujas() {
                   
                     {/* Service Options */}
                     <div className="flex items-center gap-2 mb-4">
-                      {puja.isOnline && <Badge variant="outline" className="text-xs">Online</Badge>}
-                      {puja.isHomeVisit && <Badge variant="outline" className="text-xs">Home Visit</Badge>}
-                      {puja.priestName && <Badge variant="outline" className="text-xs">Priest: {puja.priestName}</Badge>}
+                      {puja.isOnline && <Badge variant="outline" className="text-xs">{t('pujas.labels.online', 'Online')}</Badge>}
+                      {puja.isHomeVisit && <Badge variant="outline" className="text-xs">{t('pujas.labels.homeVisit', 'Home Visit')}</Badge>}
+                      {puja.priestName && <Badge variant="outline" className="text-xs">{t('pujas.labels.priest', 'Priest')}: {puja.priestName}</Badge>}
                     </div>
                     
                     <Button 
                       className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white"
                       disabled={!puja.inStock}
                     >
-                      {puja.inStock ? "Book Puja" : "Out of Stock"}
+                      {puja.inStock ? t('pujas.labels.bookPuja', 'Book Puja') : t('pujas.labels.outOfStock', 'Out of Stock')}
                   </Button>
                 </CardContent>
               </Card>
@@ -548,7 +548,7 @@ export default function Pujas() {
 
           {!loading && !error && filteredPujas.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-500 text-lg">No pujas found.</p>
+              <p className="text-gray-500 text-lg">{t('pujas.collection.empty', 'No pujas found.')}</p>
               <Button 
                 variant="outline" 
                 className="mt-4"
@@ -558,7 +558,7 @@ export default function Pujas() {
                   setSearchTerm("");
                 }}
               >
-                Clear Filters
+                {t('pujas.collection.clearFilters', 'Clear Filters')}
               </Button>
         </div>
           )}
@@ -569,32 +569,32 @@ export default function Pujas() {
       <section className="py-16 bg-gradient-to-br from-orange-50 to-red-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">🙏 Book Your Puja Service</h2>
-            <p className="text-lg text-gray-600 mb-8">Complete puja service with proper rituals and procedures</p>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">{t('pujas.booking.title', '🙏 Book Your Puja Service')}</h2>
+            <p className="text-lg text-gray-600 mb-8">{t('pujas.booking.subtitle', 'Complete puja service with proper rituals and procedures')}</p>
             
             {/* Rules and Terms */}
             <div className="bg-white rounded-2xl p-8 shadow-lg mb-12 text-left max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold text-center text-orange-600 mb-6">⚠️ Rules & Terms</h3>
+              <h3 className="text-2xl font-bold text-center text-orange-600 mb-6">{t('pujas.booking.rulesTitle', '⚠️ Rules & Terms')}</h3>
               <div className="space-y-4 text-gray-700">
                 <div className="flex items-start space-x-3">
                   <span className="text-orange-500 font-bold">1.</span>
-                  <p>Gotra is mandatory for all pujas. If gotra is unknown, "Kashyap Gotra" will be considered valid.</p>
+                  <p>{t('pujas.booking.rules.gotra', 'Gotra is mandatory for all pujas. If gotra is unknown, "Kashyap Gotra" will be considered valid.')}</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <span className="text-orange-500 font-bold">2.</span>
-                  <p>All participants must be from the same family and same gotra.</p>
+                  <p>{t('pujas.booking.rules.family', 'All participants must be from the same family and same gotra.')}</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <span className="text-orange-500 font-bold">3.</span>
-                  <p>Brahmin will chant the names and gotra of all participants during the sankalp.</p>
+                  <p>{t('pujas.booking.rules.sankalp', 'Brahmin will chant the names and gotra of all participants during the sankalp.')}</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <span className="text-orange-500 font-bold">4.</span>
-                  <p>Puja video will be sent on WhatsApp within 72 hours after completion.</p>
+                  <p>{t('pujas.booking.rules.video', 'Puja video will be sent on WhatsApp within 72 hours after completion.')}</p>
                 </div>
                 <div className="flex items-start space-x-3">
                   <span className="text-orange-500 font-bold">5.</span>
-                  <p>"Prabhu Prasad Ashirwad Box" will be delivered by courier within 10 days. No additional charges.</p>
+                  <p>{t('pujas.booking.rules.prasad', '"Prabhu Prasad Ashirwad Box" will be delivered by courier within 10 days. No additional charges.')}</p>
                 </div>
               </div>
             </div>
@@ -602,7 +602,7 @@ export default function Pujas() {
           
           {/* Regular Puja Cards */}
           <div className="mb-16">
-            <h3 className="text-2xl font-bold text-center text-gray-800 mb-8">Regular Puja Services</h3>
+            <h3 className="text-2xl font-bold text-center text-gray-800 mb-8">{t('pujas.booking.regularTitle', 'Regular Puja Services')}</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {/* 1 Person Puja */}
               <Card className="hover:shadow-lg transition-shadow border-orange-200">
@@ -611,22 +611,22 @@ export default function Pujas() {
                     <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
                       <Users className="w-8 h-8 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-gray-800">For 1 Person</h3>
+                    <h3 className="text-xl font-bold text-gray-800">{t('pujas.booking.forPerson', { count: 1 })}</h3>
                     <p className="text-3xl font-bold text-orange-600 mt-2">₹1,600</p>
                   </div>
                   
                   <div className="space-y-3 mb-6">
                     <div className="flex items-center space-x-2 text-sm">
                       <span className="text-green-500">✅</span>
-                      <span>Sankalp by Brahmin</span>
+                      <span>{t('pujas.booking.features.sankalp', 'Sankalp by Brahmin')}</span>
                     </div>
                     <div className="flex items-center space-x-2 text-sm">
                       <span className="text-green-500">✅</span>
-                      <span>Puja video in 72 hours</span>
+                      <span>{t('pujas.booking.features.video', 'Puja video in 72 hours')}</span>
                     </div>
                     <div className="flex items-center space-x-2 text-sm">
                       <span className="text-green-500">✅</span>
-                      <span>Prabhu Prasad Box</span>
+                      <span>{t('pujas.booking.features.prasad', 'Prabhu Prasad Box')}</span>
                     </div>
                   </div>
                   
@@ -642,7 +642,7 @@ export default function Pujas() {
                   </div>
                   
                   <Button className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white">
-                    Book Now
+                    {t('pujas.labels.bookPuja', 'Book Now')}
                   </Button>
                 </CardContent>
               </Card>
@@ -665,7 +665,7 @@ export default function Pujas() {
                     </div>
                     <div className="flex items-center space-x-2 text-sm">
                       <span className="text-green-500">✅</span>
-                      <span>Puja video in 72 hours</span>
+                      <span>{t('pujas.booking.features.video', 'Puja video in 72 hours')}</span>
                     </div>
                     <div className="flex items-center space-x-2 text-sm">
                       <span className="text-green-500">✅</span>
@@ -685,7 +685,7 @@ export default function Pujas() {
                   </div>
                   
                   <Button className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white">
-                    Book Now
+                    {t('pujas.labels.bookPuja', 'Book Now')}
                   </Button>
                 </CardContent>
               </Card>
@@ -708,7 +708,7 @@ export default function Pujas() {
                     </div>
                     <div className="flex items-center space-x-2 text-sm">
                       <span className="text-green-500">✅</span>
-                      <span>Puja video in 72 hours</span>
+                      <span>{t('pujas.booking.features.video', 'Puja video in 72 hours')}</span>
                     </div>
                     <div className="flex items-center space-x-2 text-sm">
                       <span className="text-green-500">✅</span>
@@ -728,7 +728,7 @@ export default function Pujas() {
                   </div>
                   
                   <Button className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white">
-                    Book Now
+                    {t('pujas.labels.bookPuja', 'Book Now')}
                   </Button>
                 </CardContent>
               </Card>
@@ -751,7 +751,7 @@ export default function Pujas() {
                     </div>
                     <div className="flex items-center space-x-2 text-sm">
                       <span className="text-green-500">✅</span>
-                      <span>Puja video in 72 hours</span>
+                      <span>{t('pujas.booking.features.video', 'Puja video in 72 hours')}</span>
                     </div>
                     <div className="flex items-center space-x-2 text-sm">
                       <span className="text-green-500">✅</span>
@@ -771,7 +771,7 @@ export default function Pujas() {
                   </div>
                   
                   <Button className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white">
-                    Book Now
+                    {t('pujas.labels.bookPuja', 'Book Now')}
                   </Button>
                 </CardContent>
               </Card>
@@ -780,7 +780,7 @@ export default function Pujas() {
 
           {/* VIP Puja Cards */}
           <div>
-            <h3 className="text-2xl font-bold text-center text-gray-800 mb-8">VIP Dosha Nivaran Pujas</h3>
+            <h3 className="text-2xl font-bold text-center text-gray-800 mb-8">{t('pujas.booking.vipTitle', 'VIP Dosha Nivaran Pujas')}</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {[
                 { name: "Kaal Sarp Dosha", price: 11000, icon: "🐍" },
@@ -824,24 +824,24 @@ export default function Pujas() {
                     <div className="space-y-2 mb-4 text-sm">
                       <div className="flex items-center space-x-2">
                         <span className="text-green-500">✅</span>
-                        <span>2.5 hours ritual</span>
+                        <span>{t('pujas.booking.vipFeatures.ritual', '2.5 hours ritual')}</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <span className="text-green-500">✅</span>
-                        <span>Expert Brahmins</span>
+                        <span>{t('pujas.booking.vipFeatures.brahmins', 'Expert Brahmins')}</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <span className="text-green-500">✅</span>
-                        <span>Live YouTube streaming</span>
+                        <span>{t('pujas.booking.vipFeatures.streaming', 'Live YouTube streaming')}</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <span className="text-green-500">✅</span>
-                        <span>VIP Prasad Box</span>
+                        <span>{t('pujas.booking.vipFeatures.vipPrasad', 'VIP Prasad Box')}</span>
                       </div>
                     </div>
                     
                     <Button className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white text-sm py-2">
-                      Book VIP Puja
+{t('pujas.labels.bookPuja', 'Book VIP Puja')}
                     </Button>
                   </CardContent>
                 </Card>
@@ -863,13 +863,13 @@ export default function Pujas() {
         
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 text-gradient bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">🌟 VIP Puja Benefits</h2>
-            <p className="text-xl opacity-90 mb-8">Special personalized rituals - 2.5 hours of divine blessings</p>
+            <h2 className="text-4xl font-bold mb-4 text-gradient bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">{t('pujas.vipBenefits.title', '🌟 VIP Puja Benefits')}</h2>
+            <p className="text-xl opacity-90 mb-8">{t('pujas.vipBenefits.subtitle', 'Special personalized rituals - 2.5 hours of divine blessings')}</p>
           </div>
 
           {/* VIP Puja Benefits */}
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-12 border border-green-400/30">
-            <h3 className="text-2xl font-bold text-center mb-8 text-yellow-300">🌟 Complete VIP Puja Benefits</h3>
+            <h3 className="text-2xl font-bold text-center mb-8 text-yellow-300">{t('pujas.vipBenefits.completeTitle', '🌟 Complete VIP Puja Benefits')}</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 { icon: "🎯", title: "Personal Ritual", desc: "2.5 hours special ritual exclusively for your family" },
@@ -895,7 +895,7 @@ export default function Pujas() {
           <div className="max-w-4xl mx-auto">
             <Card className="bg-white border-2 border-green-300 shadow-lg">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold text-green-700 mb-6 text-center">⚠️ VIP Puja Rules</h3>
+                <h3 className="text-2xl font-bold text-green-700 mb-6 text-center">{t('pujas.vipBenefits.rulesTitle', '⚠️ VIP Puja Rules')}</h3>
                 <div className="space-y-4 text-gray-700">
                   <div className="flex items-start space-x-3">
                     <span className="text-green-600 font-bold">1.</span>
@@ -925,7 +925,7 @@ export default function Pujas() {
                 
                 <div className="mt-6 p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
                   <p className="text-center text-green-800 font-semibold">
-                    "VIP Puja opens the door to happiness, peace and prosperity for your family for generations."
+                    {t('pujas.vipBenefits.quote', '"VIP Puja opens the door to happiness, peace and prosperity for your family for generations."')}
                   </p>
                 </div>
               </CardContent>
@@ -938,14 +938,14 @@ export default function Pujas() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">🎁 Prabhu Prasad Ashirwad Box</h2>
-            <p className="text-lg text-gray-600">All items are provided as blessed prasad and sanctified (consecrated) form</p>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">{t('pujas.prasadBox.title', '🎁 Prabhu Prasad Ashirwad Box')}</h2>
+            <p className="text-lg text-gray-600">{t('pujas.prasadBox.subtitle', 'All items are provided as blessed prasad and sanctified (consecrated) form')}</p>
           </div>
           
           <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-8 shadow-lg">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-2xl font-bold text-orange-600 mb-6">✨ Special Features</h3>
+                <h3 className="text-2xl font-bold text-orange-600 mb-6">{t('pujas.prasadBox.specialFeatures', '✨ Special Features')}</h3>
                 <div className="space-y-4">
                   <div className="flex items-start space-x-3">
                     <span className="text-orange-500">🌸</span>
@@ -967,7 +967,7 @@ export default function Pujas() {
               </div>
               
               <div>
-                <h3 className="text-2xl font-bold text-orange-600 mb-6">📦 Box Contents</h3>
+                <h3 className="text-2xl font-bold text-orange-600 mb-6">{t('pujas.prasadBox.boxContents', '📦 Box Contents')}</h3>
                 <div className="grid grid-cols-2 gap-4">
                   {[
                     "4 Mukhi Rudraksha Kavach",
@@ -997,15 +997,15 @@ export default function Pujas() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Why Choose Our Puja Services?</h2>
-            <p className="text-lg text-gray-600">Professional and authentic puja services</p>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">{t('pujas.features.title', 'Why Choose Our Puja Services?')}</h2>
+            <p className="text-lg text-gray-600">{t('pujas.features.subtitle', 'Professional and authentic puja services')}</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: "✅", title: "Complete Rituals", desc: "Puja as per scriptures" },
-              { icon: "🏠", title: "Home Service", desc: "Puja service at your home" },
-              { icon: "📱", title: "Online Puja", desc: "Join live online puja" }
+              { icon: "✅", title: t('pujas.features.items.completeRituals.title', 'Complete Rituals'), desc: t('pujas.features.items.completeRituals.desc', 'Puja as per scriptures') },
+              { icon: "🏠", title: t('pujas.features.items.homeService.title', 'Home Service'), desc: t('pujas.features.items.homeService.desc', 'Puja service at your home') },
+              { icon: "📱", title: t('pujas.features.items.onlinePuja.title', 'Online Puja'), desc: t('pujas.features.items.onlinePuja.desc', 'Join live online puja') }
             ].map((feature, index) => (
               <Card key={index} className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
@@ -1023,13 +1023,13 @@ export default function Pujas() {
       <section className="py-16 bg-gradient-to-r from-orange-400 to-red-500 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Book Your Puja Today
+            {t('pujas.cta.title', 'Book Your Puja Today')}
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Get divine blessings and positive energy in your life
+            {t('pujas.cta.subtitle', 'Get divine blessings and positive energy in your life')}
           </p>
           <Button className="bg-white text-orange-500 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-            Book Puja Now
+            {t('pujas.cta.bookNow', 'Book Puja Now')}
           </Button>
         </div>
       </section>

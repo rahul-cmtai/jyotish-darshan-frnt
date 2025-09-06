@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Star, ShoppingCart, Filter, Search, Heart, Eye, Gem } from "lucide-react"
 import { Textarea } from "@/components/ui/textarea"
 import { useTranslation } from "@/contexts/TranslationContext"
@@ -163,19 +162,19 @@ export default function Ratna() {
   }));
 
   const priceRanges = [
-    { id: "all", name: "All Prices" },
-    { id: "0-5000", name: "Under ₹5,000" },
-    { id: "5000-10000", name: "₹5,000 - ₹10,000" },
-    { id: "10000-20000", name: "₹10,000 - ₹20,000" },
-    { id: "20000+", name: "Above ₹20,000" }
+    { id: "all", name: t('ratna.priceRanges.all', 'All Prices') },
+    { id: "0-5000", name: t('ratna.priceRanges.under5000', 'Under ₹5,000') },
+    { id: "5000-10000", name: t('ratna.priceRanges.5000to10000', '₹5,000 - ₹10,000') },
+    { id: "10000-20000", name: t('ratna.priceRanges.10000to20000', '₹10,000 - ₹20,000') },
+    { id: "20000+", name: t('ratna.priceRanges.above20000', 'Above ₹20,000') }
   ]
 
   const sortOptions = [
-    { id: "popularity", name: "Most Popular" },
-    { id: "price-low", name: "Price: Low to High" },
-    { id: "price-high", name: "Price: High to Low" },
-    { id: "rating", name: "Highest Rated" },
-    { id: "newest", name: "Newest First" }
+    { id: "popularity", name: t('ratna.sortOptions.popularity', 'Most Popular') },
+    { id: "price-low", name: t('ratna.sortOptions.priceLow', 'Price: Low to High') },
+    { id: "price-high", name: t('ratna.sortOptions.priceHigh', 'Price: High to Low') },
+    { id: "rating", name: t('ratna.sortOptions.rating', 'Highest Rated') },
+    { id: "newest", name: t('ratna.sortOptions.newest', 'Newest First') }
   ]
 
   const filteredGemstones = gemstones.filter(gemstone => {
@@ -427,7 +426,7 @@ export default function Ratna() {
             ) : error ? (
               <p className="text-red-600">{error}</p>
             ) : (
-            <p className="text-gray-600">{t('ratna.collection.count', `${filteredGemstones.length} gemstones found`)}</p>
+            <p className="text-gray-600">{`${filteredGemstones.length} ${t('ratna.collection.count', 'gemstones found')}`}</p>
             )}
           </div>
           
@@ -454,17 +453,17 @@ export default function Ratna() {
               <Card key={gemstone._id} className="group relative overflow-hidden hover:shadow-2xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-orange-50">
                 {gemstone.premium && (
                   <Badge className="absolute top-3 left-3 z-10 bg-gradient-to-r from-yellow-500 to-orange-500 text-white shadow-lg">
-                    ✨ Premium
+                    ✨ {t('ratna.labels.premium', 'Premium')}
                   </Badge>
                 )}
                 {gemstone.luxury && (
                   <Badge className="absolute top-3 right-3 z-10 bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg">
-                    👑 Luxury
+                    👑 {t('ratna.labels.luxury', 'Luxury')}
                   </Badge>
                 )}
                 {gemstone.certified && (
                   <Badge className="absolute top-3 right-3 z-10 bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-lg">
-                    ✓ Certified
+                    ✓ {t('ratna.labels.certified', 'Certified')}
                   </Badge>
                 )}
                 
@@ -520,7 +519,7 @@ export default function Ratna() {
 
                   {/* Jaap Information */}
                   <div className="bg-gradient-to-r from-orange-50 to-red-50 px-3 py-2 rounded-lg mb-4 border border-orange-200">
-                    <div className="text-xs text-orange-800 font-medium">Worship Features:</div>
+                    <div className="text-xs text-orange-800 font-medium">{t('ratna.labels.worshipFeatures', 'Worship Features:')}</div>
                     <div className="text-sm text-orange-700">
                       📿 {gemstone.jaap} • 🙏 {gemstone.brahmins}
                     </div>
@@ -538,11 +537,11 @@ export default function Ratna() {
                   {/* Weight and Origin */}
                   <div className="grid grid-cols-2 gap-2 mb-4 text-sm">
                     <div className="bg-gray-50 px-3 py-2 rounded-lg text-center">
-                      <div className="text-xs text-gray-600">Weight</div>
+                      <div className="text-xs text-gray-600">{t('ratna.labels.weight', 'Weight')}</div>
                       <div className="font-semibold text-sm">{gemstone.weight}</div>
                     </div>
                     <div className="bg-gray-50 px-3 py-2 rounded-lg text-center">
-                      <div className="text-xs text-gray-600">Origin</div>
+                      <div className="text-xs text-gray-600">{t('ratna.labels.origin', 'Origin')}</div>
                       <div className="font-semibold text-sm">{gemstone.origin}</div>
                     </div>
                   </div>
@@ -563,7 +562,7 @@ export default function Ratna() {
                   {/* Certification */}
                   {gemstone.certified && (
                     <div className="text-xs bg-green-50 text-green-700 px-2 py-1 rounded text-center font-medium mb-4">
-                      ✓ Certified Quality
+                      ✓ {t('ratna.labels.certifiedQuality', 'Certified Quality')}
                     </div>
                   )}
                   
@@ -580,7 +579,7 @@ export default function Ratna() {
                       }}
                     >
                       <ShoppingCart className="w-4 h-4 mr-2" />
-                      {gemstone.inStock ? "Buy Now" : "Out of Stock"}
+                      {gemstone.inStock ? t('ratna.labels.buyNow', 'Buy Now') : t('ratna.labels.outOfStock', 'Out of Stock')}
                     </Button>
                   </div>
                 </CardContent>
@@ -763,7 +762,7 @@ export default function Ratna() {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      👤 Full Name *
+                      👤 {t('ratna.checkout.fullName', 'Full Name *')}
                     </label>
                     <Input
                       type="text"
@@ -777,7 +776,7 @@ export default function Ratna() {
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      📱 Mobile Number *
+                      📱 {t('ratna.checkout.mobile', 'Mobile Number *')}
                     </label>
                     <Input
                       type="tel"
@@ -793,7 +792,7 @@ export default function Ratna() {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      📞 Alternative Mobile
+                      📞 {t('ratna.checkout.alternativeMobile', 'Alternative Mobile')}
                     </label>
                     <Input
                       type="tel"
@@ -806,7 +805,7 @@ export default function Ratna() {
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      📮 PIN Code *
+                      📮 {t('ratna.checkout.pincode', 'PIN Code *')}
                     </label>
                     <Input
                       type="text"
@@ -821,7 +820,7 @@ export default function Ratna() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    🏠 Complete Address *
+                    🏠 {t('ratna.checkout.address', 'Complete Address *')}
                   </label>
                   <Textarea
                     required
@@ -836,7 +835,7 @@ export default function Ratna() {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      🏙️ City *
+                      🏙️ {t('ratna.checkout.city', 'City *')}
                     </label>
                     <Input
                       type="text"
@@ -850,7 +849,7 @@ export default function Ratna() {
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      🗺️ State *
+                      🗺️ {t('ratna.checkout.state', 'State *')}
                     </label>
                     <Input
                       type="text"
@@ -865,7 +864,7 @@ export default function Ratna() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    📝 Special Instructions (Optional)
+                    📝 {t('ratna.checkout.specialInstructions', 'Special Instructions (Optional)')}
                   </label>
                   <Textarea
                     value={checkoutData.specialInstructions}
@@ -878,13 +877,13 @@ export default function Ratna() {
 
                 {/* Important Notes */}
                 <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                  <h4 className="font-bold text-blue-800 mb-2">📌 Important Information</h4>
+                  <h4 className="font-bold text-blue-800 mb-2">📌 {t('ratna.checkout.importantInfo', 'Important Information')}</h4>
                   <div className="text-sm text-blue-700 space-y-1">
-                    <p>• Free shipping across India</p>
-                    <p>• Delivery within 5-7 working days</p>
-                    <p>• COD available (Cash on Delivery)</p>
-                    <p>• Certificate of authenticity included</p>
-                    <p>• Video of worship ceremony will be shared on WhatsApp</p>
+                    <p>• {t('ratna.checkout.freeShipping', 'Free shipping across India')}</p>
+                    <p>• {t('ratna.checkout.deliveryTime', 'Delivery within 5-7 working days')}</p>
+                    <p>• {t('ratna.checkout.codAvailable', 'COD available (Cash on Delivery)')}</p>
+                    <p>• {t('ratna.checkout.certificate', 'Certificate of authenticity included')}</p>
+                    <p>• {t('ratna.checkout.videoWorship', 'Video of worship ceremony will be shared on WhatsApp')}</p>
                   </div>
                 </div>
 
@@ -899,13 +898,13 @@ export default function Ratna() {
                       setSelectedProduct(null)
                     }}
                   >
-                    ← Back
+                    {t('ratna.checkout.back', '← Back')}
                   </Button>
                   <Button 
                     type="submit"
                     className="flex-1 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold py-3"
                   >
-                    💳 Proceed to Payment
+                    {t('ratna.checkout.proceedToPayment', '💳 Proceed to Payment')}
                   </Button>
                 </div>
               </form>

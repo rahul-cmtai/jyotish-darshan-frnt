@@ -5,6 +5,7 @@ import { Calendar, User, Eye, ArrowRight, Search, Filter, Clock, TrendingUp } fr
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useState, useEffect } from "react"
+import { useTranslation } from "@/contexts/TranslationContext"
 
 // Interface for blog post
 interface BlogPost {
@@ -25,6 +26,7 @@ interface BlogPost {
 }
 
 export default function BlogPage() {
+  const { t } = useTranslation()
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [searchTerm, setSearchTerm] = useState("")
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
@@ -150,20 +152,20 @@ export default function BlogPage() {
               <TrendingUp className="w-16 h-16" />
             </div>
             <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-white to-yellow-200 bg-clip-text text-transparent">
-              Astrology Blog
+              {t('blog.hero.title', 'Astrology Blog')}
             </h1>
           </div>
           <p className="text-2xl md:text-3xl font-semibold mb-4 text-yellow-100">
-            🔮 Latest Insights & Expert Knowledge 🔮
+            {t('blog.hero.subtitle', '🔮 Latest Insights & Expert Knowledge 🔮')}
           </p>
           <p className="text-lg md:text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-            Discover ancient wisdom, modern insights, and expert guidance on astrology, rudraksha, gemstones and spiritual practices
+            {t('blog.hero.description', 'Discover ancient wisdom, modern insights, and expert guidance on astrology, rudraksha, gemstones and spiritual practices')}
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
-            <div className="bg-white/20 px-4 py-2 rounded-full">📖 Expert Articles</div>
-            <div className="bg-white/20 px-4 py-2 rounded-full">🔮 Vedic Wisdom</div>
-            <div className="bg-white/20 px-4 py-2 rounded-full">💎 Gemstone Guides</div>
-            <div className="bg-white/20 px-4 py-2 rounded-full">🙏 Spiritual Practices</div>
+            <div className="bg-white/20 px-4 py-2 rounded-full">{t('blog.hero.features.expertArticles', '📖 Expert Articles')}</div>
+            <div className="bg-white/20 px-4 py-2 rounded-full">{t('blog.hero.features.vedicWisdom', '🔮 Vedic Wisdom')}</div>
+            <div className="bg-white/20 px-4 py-2 rounded-full">{t('blog.hero.features.gemstoneGuides', '💎 Gemstone Guides')}</div>
+            <div className="bg-white/20 px-4 py-2 rounded-full">{t('blog.hero.features.spiritualPractices', '🙏 Spiritual Practices')}</div>
           </div>
         </div>
       </section>
@@ -173,20 +175,20 @@ export default function BlogPage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="bg-white rounded-3xl p-8 shadow-2xl border border-orange-100">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-800 mb-2">🔍 Find Your Perfect Article</h2>
-              <p className="text-gray-600">Search and filter through our extensive collection of astrological knowledge</p>
+              <h2 className="text-3xl font-bold text-gray-800 mb-2">{t('blog.search.title', '🔍 Find Your Perfect Article')}</h2>
+              <p className="text-gray-600">{t('blog.search.subtitle', 'Search and filter through our extensive collection of astrological knowledge')}</p>
             </div>
             
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center">
                   <Search className="w-4 h-4 mr-2 text-orange-600" />
-                  Search Articles
+                  {t('blog.search.searchArticles', 'Search Articles')}
                 </label>
                 <div className="relative">
                   <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                   <Input
-                    placeholder="Search by title, content, or keywords..."
+                    placeholder={t('blog.search.searchPlaceholder', 'Search by title, content, or keywords...')}
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="pl-12 py-3 border-2 border-orange-200 focus:border-orange-400 rounded-xl"
@@ -197,7 +199,7 @@ export default function BlogPage() {
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center">
                   <Filter className="w-4 h-4 mr-2 text-orange-600" />
-                  Category
+                  {t('blog.search.category', 'Category')}
                 </label>
                 <select 
                   value={selectedCategory} 
@@ -213,25 +215,25 @@ export default function BlogPage() {
               <div className="flex items-end">
                 <Button className="w-full py-3 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all">
                   <Search className="w-5 h-5 mr-2" />
-                  Search Now
+                  {t('blog.search.searchNow', 'Search Now')}
                 </Button>
               </div>
             </div>
             
             {/* Quick Filter Tags */}
             <div className="flex flex-wrap justify-center gap-3">
-              <div className="text-sm text-gray-600 mr-4">Quick Filters:</div>
+              <div className="text-sm text-gray-600 mr-4">{t('blog.search.quickFilters', 'Quick Filters:')}</div>
               <button className="px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm hover:bg-orange-200 transition-colors">
-                ✨ Featured Articles
+                {t('blog.search.featuredArticles', '✨ Featured Articles')}
               </button>
               <button className="px-4 py-2 bg-red-100 text-red-700 rounded-full text-sm hover:bg-red-200 transition-colors">
-                🔥 Trending Now
+                {t('blog.search.trendingNow', '🔥 Trending Now')}
               </button>
               <button className="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm hover:bg-purple-200 transition-colors">
-                📖 Latest Posts
+                {t('blog.search.latestPosts', '📖 Latest Posts')}
               </button>
               <button className="px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm hover:bg-green-200 transition-colors">
-                💎 Gemstone Guides
+                {t('blog.search.gemstoneGuides', '💎 Gemstone Guides')}
               </button>
             </div>
           </div>
@@ -243,8 +245,8 @@ export default function BlogPage() {
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">✨ Featured Articles</h2>
-              <p className="text-gray-600">Handpicked articles with the most valuable insights</p>
+              <h2 className="text-3xl font-bold text-gray-800 mb-4">{t('blog.featured.title', '✨ Featured Articles')}</h2>
+              <p className="text-gray-600">{t('blog.featured.subtitle', 'Handpicked articles with the most valuable insights')}</p>
             </div>
             
             <div className="grid md:grid-cols-2 gap-8">
@@ -252,7 +254,7 @@ export default function BlogPage() {
                 <Card key={post._id} className="group relative overflow-hidden hover:shadow-2xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-orange-50">
                   {post.trending && (
                     <Badge className="absolute top-4 left-4 z-10 bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-lg">
-                      🔥 Trending
+                      {t('blog.trending', '🔥 Trending')}
                     </Badge>
                   )}
                   
@@ -316,7 +318,7 @@ export default function BlogPage() {
                         className="text-orange-600 hover:text-orange-700 hover:bg-orange-50 p-0"
                         onClick={() => window.location.href = `/blog/${post.slug}`}
                       >
-                        Read More <ArrowRight className="w-4 h-4 ml-1" />
+                        {t('blog.readMore', 'Read More')} <ArrowRight className="w-4 h-4 ml-1" />
                       </Button>
                     </div>
                   </CardContent>
@@ -331,8 +333,8 @@ export default function BlogPage() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">📚 All Articles</h2>
-            <p className="text-gray-600">{filteredPosts.length} articles found</p>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">{t('blog.allArticles.title', '📚 All Articles')}</h2>
+            <p className="text-gray-600">{t('blog.allArticles.articlesFound', { count: filteredPosts.length })}</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -340,7 +342,7 @@ export default function BlogPage() {
               <Card key={post._id} className="group relative overflow-hidden hover:shadow-2xl transition-all duration-300 border-0 bg-white">
                 {post.trending && (
                   <Badge className="absolute top-4 left-4 z-10 bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-lg">
-                    🔥 Trending
+                    {t('blog.trending', '🔥 Trending')}
                   </Badge>
                 )}
                 
@@ -404,7 +406,7 @@ export default function BlogPage() {
                       className="text-orange-600 hover:text-orange-700 hover:bg-orange-50 p-0"
                       onClick={() => window.location.href = `/blog/${post.slug}`}
                     >
-                      Read More <ArrowRight className="w-4 h-4 ml-1" />
+                      {t('blog.readMore', 'Read More')} <ArrowRight className="w-4 h-4 ml-1" />
                     </Button>
                   </div>
                 </CardContent>
@@ -430,7 +432,7 @@ export default function BlogPage() {
 
           {!loading && filteredPosts.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-500 text-lg">No articles found.</p>
+              <p className="text-gray-500 text-lg">{t('blog.noArticlesFound', 'No articles found.')}</p>
               <Button 
                 variant="outline" 
                 className="mt-4"
@@ -439,7 +441,7 @@ export default function BlogPage() {
                   setSearchTerm("")
                 }}
               >
-                Clear Filters
+                {t('blog.clearFilters', 'Clear Filters')}
               </Button>
             </div>
           )}
@@ -447,7 +449,7 @@ export default function BlogPage() {
           {/* Load More Button */}
           <div className="text-center mt-12">
             <Button className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white px-8 py-3 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all">
-              Load More Articles
+              {t('blog.loadMore', 'Load More Articles')}
             </Button>
           </div>
         </div>
@@ -456,18 +458,18 @@ export default function BlogPage() {
       {/* Newsletter Section */}
       <section className="py-16 bg-gradient-to-r from-orange-600 via-red-500 to-purple-600 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">📧 Get Latest Blog Updates</h2>
+          <h2 className="text-3xl font-bold mb-4">{t('blog.newsletter.title', '📧 Get Latest Blog Updates')}</h2>
           <p className="text-lg opacity-90 mb-8">
-            Subscribe to receive the latest astrology insights and tips directly in your inbox
+            {t('blog.newsletter.subtitle', 'Subscribe to receive the latest astrology insights and tips directly in your inbox')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <input
               type="email"
-              placeholder="Your email address..."
+              placeholder={t('blog.newsletter.emailPlaceholder', 'Your email address...')}
               className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
             />
             <Button className="bg-white text-orange-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold">
-              Subscribe
+              {t('blog.newsletter.subscribe', 'Subscribe')}
             </Button>
           </div>
         </div>

@@ -31,26 +31,59 @@ export default function About() {
 
   const testimonials = [
     {
-      name: t('about.testimonials.priyaSharma.name'),
-      location: t('about.testimonials.priyaSharma.location'),
-      rating: 5,
-      text: t('about.testimonials.priyaSharma.text'),
-      image: "/placeholder-user.jpg"
+      id: 1,
+      name: "Saara",
+      role: "Manager",
+      zodiac: "Leo",
+      rating: 3,
+      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+      text: "Jyotish Lok helped me make crucial career decisions.",
     },
     {
-      name: t('about.testimonials.rajeshKumar.name'), 
-      location: t('about.testimonials.rajeshKumar.location'),
+      id: 2,
+      name: "Priya Sharma",
+      role: "Software Engineer",
+      zodiac: "Aries",
       rating: 5,
-      text: t('about.testimonials.rajeshKumar.text'),
-      image: "/placeholder-user.jpg"
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+      text: "Completely transformed my life! Accurate predictions and exceptional service.",
     },
     {
-      name: t('about.testimonials.anjaliPatel.name'),
-      location: t('about.testimonials.anjaliPatel.location'), 
+      id: 3,
+      name: "Rajesh Kumar",
+      role: "Business Owner",
+      zodiac: "Taurus",
       rating: 5,
-      text: t('about.testimonials.anjaliPatel.text'),
-      image: "/placeholder-user.jpg"
-    }
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+      text: "Detailed kundli analysis revealed spot-on insights.",
+    },
+    {
+      id: 4,
+      name: "Anjali Patel",
+      role: "Teacher",
+      zodiac: "Cancer",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
+      text: "Found my perfect life partner through match-making service.",
+    },
+    {
+      id: 5,
+      name: "Vikram Singh",
+      role: "Doctor",
+      zodiac: "Virgo",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+      text: "Invaluable career guidance. Perfect understanding.",
+    },
+    {
+      id: 6,
+      name: "Meera Reddy",
+      role: "Artist",
+      zodiac: "Libra",
+      rating: 5,
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+      text: "Name correction brought positive changes.",
+    },
   ]
 
   return (
@@ -513,7 +546,7 @@ export default function About() {
                     />
                     <div>
                       <h4 className="font-semibold text-gray-800">{testimonial.name}</h4>
-                      <p className="text-sm text-gray-600">{testimonial.location}</p>
+                      <p className="text-sm text-gray-600">{testimonial.role}</p>
                     </div>
                   </div>
                   

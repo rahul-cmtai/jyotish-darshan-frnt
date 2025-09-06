@@ -8,25 +8,15 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { 
   Star, 
-  Sparkles, 
   User,
-  Moon,
-  Sun,
   ArrowRight,
   CheckCircle,
-  Calendar,
-  Clock,
-  MapPin,
   Heart,
   Brain,
   Target,
-  BookOpen,
   Phone,
   Mail,
   MessageCircle,
-  Shield,
-  Zap,
-  Gem
 } from "lucide-react"
 import { useTranslation } from "@/contexts/TranslationContext"
 
@@ -200,31 +190,31 @@ export default function SamanyeKundliPage() {
             <div className="flex items-center justify-center gap-3 mb-6">
               <Star className="w-8 h-8 text-yellow-400" />
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                {t('kundli.title', 'Samanye Kundli')}
+                {t('samanyeKundli.hero.title', 'Samanye Kundli')}
               </h1>
               <Star className="w-8 h-8 text-yellow-400" />
             </div>
             
             <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-orange-100">
-              {t('kundli.subtitle', 'सामान्य कुंडली विश्लेषण')}
+              {t('samanyeKundli.hero.subtitle', 'सामान्य कुंडली विश्लेषण')}
             </h2>
             
             <p className="text-xl md:text-2xl text-orange-100 mb-8 max-w-3xl mx-auto">
-              {t('kundli.description', 'Discover your life\'s blueprint with our comprehensive general kundli analysis service.')}
+              {t('samanyeKundli.hero.description', 'Discover your life\'s blueprint with our comprehensive general kundli analysis service.')}
             </p>
             
             <div className="flex flex-wrap justify-center gap-6 text-sm opacity-90">
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>{t('kundli.features.planetaryPositions', 'Basic Planetary Positions')}</span>
+                <span>{t('samanyeKundli.hero.features.planetaryPositions', 'Basic Planetary Positions')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>{t('kundli.features.houseAnalysis', 'House Analysis')}</span>
+                <span>{t('samanyeKundli.hero.features.houseAnalysis', 'House Analysis')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>{t('kundli.features.lifePathGuidance', 'Life Path Guidance')}</span>
+                <span>{t('samanyeKundli.hero.features.lifePathGuidance', 'Life Path Guidance')}</span>
               </div>
             </div>
           </motion.div>
@@ -249,8 +239,8 @@ export default function SamanyeKundliPage() {
                 className="mb-6 p-6 bg-green-50 border border-green-200 rounded-lg text-center"
               >
                 <div className="text-6xl mb-4">🙏</div>
-                <h3 className="text-2xl font-bold text-green-800 mb-2">{t('kundli.thankYou.title', 'Thank You!')}</h3>
-                <p className="text-green-700">{t('kundli.thankYou.message', 'Your Samanye Kundli request has been submitted successfully. We\'ll get back to you soon!')}</p>
+                <h3 className="text-2xl font-bold text-green-800 mb-2">{t('samanyeKundli.thankYou.title', 'Thank You!')}</h3>
+                <p className="text-green-700">{t('samanyeKundli.thankYou.message', 'Your Samanye Kundli request has been submitted successfully. We\'ll get back to you soon!')}</p>
               </motion.div>
             )}
             <Card className="p-8 bg-white shadow-xl border-0">
@@ -258,18 +248,18 @@ export default function SamanyeKundliPage() {
                 <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <User className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{t('kundli.form.title', 'Generate Your Kundli')}</h3>
-                <p className="text-gray-600">{t('kundli.form.subtitle', 'Enter your birth details to get started')}</p>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">{t('samanyeKundli.form.title', 'Generate Your Kundli')}</h3>
+                <p className="text-gray-600">{t('samanyeKundli.form.subtitle', 'Enter your birth details to get started')}</p>
               </div>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('kundli.form.fields.fullName', 'Full Name')}
+                    {t('samanyeKundli.form.fields.fullName', 'Full Name')}
                   </label>
                   <Input
                     type="text"
-                    placeholder={t('kundli.form.placeholders.fullName', 'Enter your full name')}
+                    placeholder={t('samanyeKundli.form.placeholders.fullName', 'Enter your full name')}
                     value={formData.name}
                     onChange={(e) => handleInputChange("name", e.target.value)}
                     className="w-full"
@@ -279,7 +269,7 @@ export default function SamanyeKundliPage() {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('kundli.form.fields.dateOfBirth', 'Date of Birth')}
+                    {t('samanyeKundli.form.fields.dateOfBirth', 'Date of Birth')}
                   </label>
                   <Input
                     type="date"
@@ -292,7 +282,7 @@ export default function SamanyeKundliPage() {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('kundli.form.fields.timeOfBirth', 'Time of Birth')}
+                    {t('samanyeKundli.form.fields.timeOfBirth', 'Time of Birth')}
                   </label>
                   <Input
                     type="time"
@@ -305,11 +295,11 @@ export default function SamanyeKundliPage() {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('kundli.form.fields.placeOfBirth', 'Place of Birth')}
+                    {t('samanyeKundli.form.fields.placeOfBirth', 'Place of Birth')}
                   </label>
                   <Input
                     type="text"
-                    placeholder={t('kundli.form.placeholders.placeOfBirth', 'City, State, Country')}
+                    placeholder={t('samanyeKundli.form.placeholders.placeOfBirth', 'City, State, Country')}
                     value={formData.place}
                     onChange={(e) => handleInputChange("place", e.target.value)}
                     className="w-full"
@@ -319,27 +309,27 @@ export default function SamanyeKundliPage() {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('kundli.form.fields.gender', 'Gender')}
+                    {t('samanyeKundli.form.fields.gender', 'Gender')}
                   </label>
                   <Select value={formData.gender} onValueChange={(value) => handleInputChange("gender", value)}>
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder={t('kundli.form.placeholders.gender', 'Select gender')} />
+                      <SelectValue placeholder={t('samanyeKundli.form.placeholders.gender', 'Select gender')} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="male">{t('kundli.form.options.male', 'Male')}</SelectItem>
-                      <SelectItem value="female">{t('kundli.form.options.female', 'Female')}</SelectItem>
-                      <SelectItem value="other">{t('kundli.form.options.other', 'Other')}</SelectItem>
+                      <SelectItem value="male">{t('samanyeKundli.form.options.male', 'Male')}</SelectItem>
+                      <SelectItem value="female">{t('samanyeKundli.form.options.female', 'Female')}</SelectItem>
+                      <SelectItem value="other">{t('samanyeKundli.form.options.other', 'Other')}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('kundli.form.fields.mobileNumber', 'Mobile Number')}
+                    {t('samanyeKundli.form.fields.mobileNumber', 'Mobile Number')}
                   </label>
                   <Input
                     type="tel"
-                    placeholder={t('kundli.form.placeholders.mobileNumber', 'Enter your mobile number')}
+                    placeholder={t('samanyeKundli.form.placeholders.mobileNumber', 'Enter your mobile number')}
                     value={formData.mobile}
                     onChange={(e) => handleInputChange("mobile", e.target.value)}
                     className="w-full"
@@ -349,10 +339,10 @@ export default function SamanyeKundliPage() {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('kundli.form.fields.kundli', 'Kundli')}
+                    {t('samanyeKundli.form.fields.kundli', 'Kundli')}
                   </label>
                   <div className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-700 font-medium">
-                    {t('kundli.title', 'Samanye Kundli')}
+                    {t('samanyeKundli.hero.title', 'Samanye Kundli')}
                   </div>
                 </div>
                 
@@ -360,7 +350,7 @@ export default function SamanyeKundliPage() {
                   type="submit" 
                   className="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white py-3 text-lg font-semibold"
                 >
-                  {t('kundli.form.submit', 'Submit')}
+                  {t('samanyeKundli.form.submit', 'Submit')}
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </form>
@@ -370,9 +360,9 @@ export default function SamanyeKundliPage() {
           {/* Features Section */}
           <motion.div variants={itemVariants} className="space-y-6">
             <div className="text-center lg:text-left">
-              <h3 className="text-3xl font-bold text-gray-900 mb-6">{t('kundli.whatYouGet.title', 'What You\'ll Get')}</h3>
+              <h3 className="text-3xl font-bold text-gray-900 mb-6">{t('samanyeKundli.whatYouGet.title', 'What You\'ll Get')}</h3>
               <p className="text-lg text-gray-600 mb-8">
-                {t('kundli.whatYouGet.description', 'Our comprehensive kundli analysis provides insights into your personality, relationships, career, and life path based on Vedic astrology principles.')}
+                {t('samanyeKundli.whatYouGet.description', 'Our comprehensive kundli analysis provides insights into your personality, relationships, career, and life path based on Vedic astrology principles.')}
               </p>
             </div>
             
@@ -383,8 +373,8 @@ export default function SamanyeKundliPage() {
                     <Star className="w-6 h-6 text-orange-600" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">{t('kundli.features.planetaryPositions.title', 'Basic Planetary Positions')}</h4>
-                    <p className="text-gray-600">{t('kundli.features.planetaryPositions.description', 'Understand the positions of planets in your birth chart and their influence on your life.')}</p>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">{t('samanyeKundli.features.planetaryPositions.title', 'Basic Planetary Positions')}</h4>
+                    <p className="text-gray-600">{t('samanyeKundli.features.planetaryPositions.description', 'Understand the positions of planets in your birth chart and their influence on your life.')}</p>
                   </div>
                 </div>
               </Card>
@@ -395,8 +385,8 @@ export default function SamanyeKundliPage() {
                     <Target className="w-6 h-6 text-red-600" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">{t('kundli.features.houseAnalysis.title', 'House Analysis')}</h4>
-                    <p className="text-gray-600">{t('kundli.features.houseAnalysis.description', 'Detailed analysis of all 12 houses and their impact on different aspects of your life.')}</p>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">{t('samanyeKundli.features.houseAnalysis.title', 'House Analysis')}</h4>
+                    <p className="text-gray-600">{t('samanyeKundli.features.houseAnalysis.description', 'Detailed analysis of all 12 houses and their impact on different aspects of your life.')}</p>
                   </div>
                 </div>
               </Card>
@@ -407,8 +397,8 @@ export default function SamanyeKundliPage() {
                     <Brain className="w-6 h-6 text-yellow-600" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">{t('kundli.features.lifePathGuidance.title', 'Life Path Guidance')}</h4>
-                    <p className="text-gray-600">{t('kundli.features.lifePathGuidance.description', 'Personalized guidance for your career, relationships, and life decisions based on your kundli.')}</p>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">{t('samanyeKundli.features.lifePathGuidance.title', 'Life Path Guidance')}</h4>
+                    <p className="text-gray-600">{t('samanyeKundli.features.lifePathGuidance.description', 'Personalized guidance for your career, relationships, and life decisions based on your kundli.')}</p>
                   </div>
                 </div>
               </Card>
@@ -419,8 +409,8 @@ export default function SamanyeKundliPage() {
                     <Heart className="w-6 h-6 text-orange-600" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">{t('kundli.features.relationshipInsights.title', 'Relationship Insights')}</h4>
-                    <p className="text-gray-600">{t('kundli.features.relationshipInsights.description', 'Discover compatibility insights and relationship guidance based on astrological analysis.')}</p>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">{t('samanyeKundli.features.relationshipInsights.title', 'Relationship Insights')}</h4>
+                    <p className="text-gray-600">{t('samanyeKundli.features.relationshipInsights.description', 'Discover compatibility insights and relationship guidance based on astrological analysis.')}</p>
                   </div>
                 </div>
               </Card>
@@ -438,8 +428,8 @@ export default function SamanyeKundliPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('kundli.planetaryInfluences.title', 'Planetary Influences')}</h2>
-            <p className="text-lg text-gray-600">{t('kundli.planetaryInfluences.description', 'Understanding how different planets influence various aspects of your life.')}</p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('samanyeKundli.planetaryInfluences.title', 'Planetary Influences')}</h2>
+            <p className="text-lg text-gray-600">{t('samanyeKundli.planetaryInfluences.description', 'Understanding how different planets influence various aspects of your life.')}</p>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -478,8 +468,8 @@ export default function SamanyeKundliPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('kundli.houses.title', 'The 12 Houses')}</h2>
-            <p className="text-lg text-gray-600">{t('kundli.houses.description', 'Each house represents different aspects of life and their significance in your kundli.')}</p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('samanyeKundli.houses.title', 'The 12 Houses')}</h2>
+            <p className="text-lg text-gray-600">{t('samanyeKundli.houses.description', 'Each house represents different aspects of life and their significance in your kundli.')}</p>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -514,16 +504,16 @@ export default function SamanyeKundliPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl font-bold mb-4">{t('kundli.cta.title', 'Ready to Discover Your Destiny?')}</h2>
+            <h2 className="text-3xl font-bold mb-4">{t('samanyeKundli.cta.title', 'Ready to Discover Your Destiny?')}</h2>
             <p className="text-lg opacity-90 mb-8">
-              {t('kundli.cta.description', 'Get your personalized kundli analysis and unlock the secrets of your birth chart.')}
+              {t('samanyeKundli.cta.description', 'Get your personalized kundli analysis and unlock the secrets of your birth chart.')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="bg-white text-orange-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
-                {t('kundli.cta.generateNow', 'Generate Now')}
+                {t('samanyeKundli.cta.generateNow', 'Generate Now')}
               </Button>
               <Button variant="outline" className="border-white text-orange-700 hover:bg-white hover:text-orange-600 px-8 py-3 text-lg font-semibold">
-                {t('kundli.cta.learnMore', 'Learn More')}
+                {t('samanyeKundli.cta.learnMore', 'Learn More')}
               </Button>
             </div>
           </motion.div>
@@ -538,31 +528,31 @@ export default function SamanyeKundliPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('kundli.contact.title', 'Get in Touch')}</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('samanyeKundli.contact.title', 'Get in Touch')}</h2>
             <p className="text-lg text-gray-600 mb-8">
-              {t('kundli.contact.description', 'Have questions about your kundli? Our expert astrologers are here to help.')}
+              {t('samanyeKundli.contact.description', 'Have questions about your kundli? Our expert astrologers are here to help.')}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="flex flex-col items-center gap-3">
                 <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
                   <Phone className="w-6 h-6 text-orange-600" />
                 </div>
-                <h3 className="font-semibold text-gray-900">{t('kundli.contact.callUs', 'Call Us')}</h3>
+                <h3 className="font-semibold text-gray-900">{t('samanyeKundli.contact.callUs', 'Call Us')}</h3>
                 <p className="text-gray-600">+91 9773380099</p>
               </div>
               <div className="flex flex-col items-center gap-3">
                 <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
                   <Mail className="w-6 h-6 text-red-600" />
                 </div>
-                <h3 className="font-semibold text-gray-900">{t('kundli.contact.emailUs', 'Email Us')}</h3>
+                <h3 className="font-semibold text-gray-900">{t('samanyeKundli.contact.emailUs', 'Email Us')}</h3>
                 <p className="text-gray-600">info@jyotidarshan.com</p>
               </div>
               <div className="flex flex-col items-center gap-3">
                 <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
                   <MessageCircle className="w-6 h-6 text-yellow-600" />
                 </div>
-                <h3 className="font-semibold text-gray-900">{t('kundli.contact.chatNow', 'Chat Now')}</h3>
-                <p className="text-gray-600">{t('kundli.contact.liveConsultation', 'Live Consultation')}</p>
+                <h3 className="font-semibold text-gray-900">{t('samanyeKundli.contact.chatNow', 'Chat Now')}</h3>
+                <p className="text-gray-600">{t('samanyeKundli.contact.liveConsultation', 'Live Consultation')}</p>
               </div>
             </div>
           </motion.div>

@@ -5,7 +5,7 @@ import React, { createContext, useContext, useState, useEffect, ReactNode } from
 interface TranslationContextType {
   locale: string
   setLocale: (locale: string) => void
-  t: (key: string, fallback?: string) => string
+  t: (key: string, fallbackOrInterpolation?: string | Record<string, any>) => string
   isLoading: boolean
 }
 
@@ -29,13 +29,10 @@ export function TranslationProvider({ children }: TranslationProviderProps) {
   const loadTranslations = async (newLocale: string) => {
     try {
       setIsLoading(true)
-      // Add cache-busting parameter to ensure fresh translations
-      const cacheBuster = Date.now()
-      const response = await fetch(`/locales/${newLocale}/common.json?t=${cacheBuster}`)
+      const response = await fetch(`/locales/${newLocale}/common.json`)
       if (response.ok) {
         const data = await response.json()
         setTranslations(data)
-        console.log('Translations loaded for', newLocale, ':', data)
       } else {
         console.error('Failed to fetch translations:', response.status)
       }
@@ -54,19 +51,15 @@ export function TranslationProvider({ children }: TranslationProviderProps) {
     loadTranslations(newLocale)
   }
 
-  const t = (key: string, fallback?: string): string => {
+  const t = (key: string, fallbackOrInterpolation?: string | Record<string, any>): string => {
     if (isLoading) {
-      console.log('Translation loading, returning fallback for:', key)
-      return fallback || key
+      return typeof fallbackOrInterpolation === 'string' ? fallbackOrInterpolation : key
     }
     
     // If translations are empty, return the key
     if (!translations || Object.keys(translations).length === 0) {
-      console.warn('Translations not loaded yet for key:', key)
-      return fallback || key
+      return typeof fallbackOrInterpolation === 'string' ? fallbackOrInterpolation : key
     }
-    
-    console.log('Looking for translation key:', key, 'in translations:', translations)
     
     const keys = key.split('.')
     let value: any = translations
@@ -74,19 +67,21 @@ export function TranslationProvider({ children }: TranslationProviderProps) {
     for (const k of keys) {
       if (value && typeof value === 'object' && k in value) {
         value = value[k]
-        console.log(`Found key ${k}, value:`, value)
       } else {
-        console.warn(`Translation key not found: ${key} (missing: ${k})`)
-        return fallback || key
+        return typeof fallbackOrInterpolation === 'string' ? fallbackOrInterpolation : key
       }
     }
     
     if (typeof value === 'string') {
-      console.log(`Translation found for ${key}:`, value)
+      // Handle interpolation if fallbackOrInterpolation is an object
+      if (typeof fallbackOrInterpolation === 'object' && fallbackOrInterpolation !== null) {
+        return value.replace(/\{\{(\w+)\}\}/g, (match, placeholder) => {
+          return fallbackOrInterpolation[placeholder] || match
+        })
+      }
       return value
     } else {
-      console.warn(`Translation value is not a string for key: ${key}`, value)
-      return fallback || key
+      return typeof fallbackOrInterpolation === 'string' ? fallbackOrInterpolation : key
     }
   }
 

@@ -216,15 +216,15 @@ export default function Sadhana() {
           <div className="flex flex-wrap justify-center gap-6 text-sm opacity-90">
             <div className="flex items-center gap-2">
               <span className="text-2xl">🧘</span>
-              <span>Daily Practice</span>
+              <span>{t('sadhana.hero.features.dailyPractice', 'Daily Practice')}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-2xl">🙏</span>
-              <span>Expert Guidance</span>
+              <span>{t('sadhana.hero.features.expertGuidance', 'Expert Guidance')}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-2xl">✨</span>
-              <span>Life Transformation</span>
+              <span>{t('sadhana.hero.features.lifeTransformation', 'Life Transformation')}</span>
             </div>
           </div>
         </div>
@@ -235,19 +235,18 @@ export default function Sadhana() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-              What is Sadhana?
+              {t('sadhana.whatIsSadhana.title', 'What is Sadhana?')}
             </h2>
             <p className="text-lg text-gray-600 max-w-4xl mx-auto">
-              Sadhana means continuous practice. It is a systematic method of spiritual development 
-              that leads individuals to higher consciousness through mantra chanting, meditation, and devotion.
+              {t('sadhana.whatIsSadhana.description', 'Sadhana means continuous practice. It is a systematic method of spiritual development that leads individuals to higher consciousness through mantra chanting, meditation, and devotion.')}
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: "🧘", title: "Meditation", desc: "Deep meditation for inner peace" },
-              { icon: "📿", title: "Mantra Jaap", desc: "Sacred mantra chanting" },
-              { icon: "🕉️", title: "Devotion", desc: "Pure devotion and surrender" }
+              { icon: "🧘", title: t('sadhana.whatIsSadhana.items.meditation.title', 'Meditation'), desc: t('sadhana.whatIsSadhana.items.meditation.desc', 'Deep meditation for inner peace') },
+              { icon: "📿", title: t('sadhana.whatIsSadhana.items.mantraJaap.title', 'Mantra Jaap'), desc: t('sadhana.whatIsSadhana.items.mantraJaap.desc', 'Sacred mantra chanting') },
+              { icon: "🕉️", title: t('sadhana.whatIsSadhana.items.devotion.title', 'Devotion'), desc: t('sadhana.whatIsSadhana.items.devotion.desc', 'Pure devotion and surrender') }
             ].map((feature, index) => (
               <Card key={index} className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
@@ -266,20 +265,20 @@ export default function Sadhana() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="bg-white rounded-3xl p-8 shadow-2xl border border-orange-100">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-800 mb-2">🔍 Find Your Perfect Sadhana</h2>
-              <p className="text-gray-600">Filter by category, level and search</p>
+              <h2 className="text-3xl font-bold text-gray-800 mb-2">{t('sadhana.search.title', '🔍 Find Your Perfect Sadhana')}</h2>
+              <p className="text-gray-600">{t('sadhana.search.subtitle', 'Filter by category, level and search')}</p>
             </div>
             
             <div className="grid md:grid-cols-4 gap-6 mb-8">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center">
                   <Search className="w-4 h-4 mr-2 text-orange-600" />
-                  Search Sadhanas
+                  {t('sadhana.search.labels.search', 'Search Sadhanas')}
                 </label>
                 <div className="relative">
                   <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                   <Input
-                    placeholder="Search sadhana, deity, or category..."
+                    placeholder={t('sadhana.search.placeholders.search', 'Search sadhana, deity, or category...')}
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="pl-12 py-3 border-2 border-orange-200 focus:border-orange-400 rounded-xl"
@@ -290,14 +289,14 @@ export default function Sadhana() {
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center">
                   <Brain className="w-4 h-4 mr-2 text-orange-600" />
-                  Category
+                  {t('sadhana.search.labels.category', 'Category')}
                 </label>
                 <Select value={selectedCategory} onValueChange={setSelectedCategory}>
                   <SelectTrigger className="py-3 border-2 border-orange-200 focus:border-orange-400 rounded-xl">
-                    <SelectValue placeholder="Select Category" />
+                    <SelectValue placeholder={t('sadhana.search.placeholders.category', 'Select Category')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Categories</SelectItem>
+                    <SelectItem value="all">{t('sadhana.search.options.allCategories', 'All Categories')}</SelectItem>
                     {categories.map((category) => (
                       <SelectItem key={category} value={category}>
                         {category}
@@ -309,14 +308,14 @@ export default function Sadhana() {
               
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center">
-                  📊 Level
+                  📊 {t('sadhana.search.labels.level', 'Level')}
                 </label>
                 <Select value={selectedLevel} onValueChange={setSelectedLevel}>
                   <SelectTrigger className="py-3 border-2 border-orange-200 focus:border-orange-400 rounded-xl">
-                    <SelectValue placeholder="Select Level" />
+                    <SelectValue placeholder={t('sadhana.search.placeholders.level', 'Select Level')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Levels</SelectItem>
+                    <SelectItem value="all">{t('sadhana.search.options.allLevels', 'All Levels')}</SelectItem>
                     {levels.map((level) => (
                       <SelectItem key={level} value={level}>
                         {level}
@@ -328,18 +327,18 @@ export default function Sadhana() {
               
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center">
-                  📊 Sort By
+                  📊 {t('sadhana.search.labels.sortBy', 'Sort By')}
                 </label>
                 <Select value={sortBy} onValueChange={setSortBy}>
                   <SelectTrigger className="py-3 border-2 border-orange-200 focus:border-orange-400 rounded-xl">
-                    <SelectValue placeholder="Sort By" />
+                    <SelectValue placeholder={t('sadhana.search.placeholders.sortBy', 'Sort By')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="popularity">Most Popular</SelectItem>
-                    <SelectItem value="price-low">Price: Low to High</SelectItem>
-                    <SelectItem value="price-high">Price: High to Low</SelectItem>
-                    <SelectItem value="rating">Highest Rated</SelectItem>
-                    <SelectItem value="newest">Newest First</SelectItem>
+                    <SelectItem value="popularity">{t('sadhana.search.sortOptions.popularity', 'Most Popular')}</SelectItem>
+                    <SelectItem value="price-low">{t('sadhana.search.sortOptions.priceLow', 'Price: Low to High')}</SelectItem>
+                    <SelectItem value="price-high">{t('sadhana.search.sortOptions.priceHigh', 'Price: High to Low')}</SelectItem>
+                    <SelectItem value="rating">{t('sadhana.search.sortOptions.rating', 'Highest Rated')}</SelectItem>
+                    <SelectItem value="newest">{t('sadhana.search.sortOptions.newest', 'Newest First')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -352,31 +351,31 @@ export default function Sadhana() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Available Sadhana Programs</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">{t('sadhana.collection.title', 'Available Sadhana Programs')}</h2>
             {loading ? (
-              <p className="text-gray-600">Loading sadhanas...</p>
+              <p className="text-gray-600">{t('sadhana.collection.loading', 'Loading sadhanas...')}</p>
             ) : error ? (
               <p className="text-red-600">{error}</p>
             ) : (
-              <p className="text-gray-600">{filteredSadhanas.length} sadhanas found</p>
+              <p className="text-gray-600">{t('sadhana.collection.count', `${filteredSadhanas.length} sadhanas found`)}</p>
             )}
           </div>
           
           {loading ? (
             <div className="text-center py-20">
               <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-orange-500 mx-auto mb-4"></div>
-              <p className="text-gray-600 text-lg">Loading sadhanas...</p>
+              <p className="text-gray-600 text-lg">{t('sadhana.collection.loading', 'Loading sadhanas...')}</p>
             </div>
           ) : error ? (
             <div className="text-center py-20">
               <div className="text-red-500 text-6xl mb-4">⚠️</div>
-              <h3 className="text-2xl font-bold mb-2 text-red-600">Failed to Load Sadhanas</h3>
+              <h3 className="text-2xl font-bold mb-2 text-red-600">{t('sadhana.collection.error.title', 'Failed to Load Sadhanas')}</h3>
               <p className="text-gray-600 mb-6">{error}</p>
               <Button 
                 onClick={fetchSadhanas}
                 className="bg-orange-500 hover:bg-orange-600"
               >
-                Try Again
+                {t('sadhana.collection.error.retry', 'Try Again')}
               </Button>
             </div>
           ) : (
@@ -429,18 +428,18 @@ export default function Sadhana() {
                   <div className="space-y-3 mb-4 text-sm">
                     <div className="flex items-center">
                       <Calendar className="w-4 h-4 mr-2 text-orange-500" />
-                        <span className="text-gray-700 font-medium">Duration: {sadhana.duration}</span>
+                        <span className="text-gray-700 font-medium">{t('sadhana.labels.duration', 'Duration')}: {sadhana.duration}</span>
                     </div>
                     <div className="flex items-center">
                         <Users className="w-4 h-4 mr-2 text-orange-500" />
-                        <span className="text-gray-700 font-medium">Deity: {sadhana.deity}</span>
+                        <span className="text-gray-700 font-medium">{t('sadhana.labels.deity', 'Deity')}: {sadhana.deity}</span>
                     </div>
                   </div>
                   
                     {/* Process */}
                     {sadhana.process && sadhana.process.length > 0 && (
                   <div className="mb-4">
-                        <h4 className="font-semibold mb-2 text-orange-600 text-sm">🔹 Process:</h4>
+                        <h4 className="font-semibold mb-2 text-orange-600 text-sm">🔹 {t('sadhana.labels.process', 'Process:')}</h4>
                         <ul className="space-y-1 text-xs text-gray-600">
                           {sadhana.process.slice(0, 2).map((item, index) => {
                             // Parse malformed JSON strings and handle \n characters
@@ -494,7 +493,7 @@ export default function Sadhana() {
                     {/* Benefits */}
                     {sadhana.benefits && sadhana.benefits.length > 0 && (
                   <div className="mb-6">
-                        <h4 className="font-semibold mb-2 text-green-600 text-sm">🔹 Benefits:</h4>
+                        <h4 className="font-semibold mb-2 text-green-600 text-sm">🔹 {t('sadhana.labels.benefits', 'Benefits:')}</h4>
                         <ul className="space-y-1 text-xs text-gray-600">
                           {sadhana.benefits.slice(0, 2).map((benefit, index) => {
                             // Parse malformed JSON strings and handle \n characters
@@ -566,7 +565,7 @@ export default function Sadhana() {
                       className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white"
                       disabled={!sadhana.inStock}
                     >
-                      {sadhana.inStock ? "Join Sadhana Program" : "Out of Stock"}
+                      {sadhana.inStock ? t('sadhana.labels.joinProgram', 'Join Sadhana Program') : t('sadhana.labels.outOfStock', 'Out of Stock')}
                   </Button>
                 </CardContent>
               </Card>
@@ -576,7 +575,7 @@ export default function Sadhana() {
 
           {!loading && !error && filteredSadhanas.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-500 text-lg">No sadhanas found.</p>
+              <p className="text-gray-500 text-lg">{t('sadhana.collection.empty', 'No sadhanas found.')}</p>
               <Button 
                 variant="outline" 
                 className="mt-4"
@@ -586,7 +585,7 @@ export default function Sadhana() {
                   setSearchTerm("");
                 }}
               >
-                Clear Filters
+                {t('sadhana.collection.clearFilters', 'Clear Filters')}
               </Button>
             </div>
           )}
@@ -641,15 +640,15 @@ export default function Sadhana() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Why Choose Our Sadhana Programs?</h2>
-            <p className="text-lg text-gray-600">Authentic spiritual guidance and support</p>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">{t('sadhana.features.title', 'Why Choose Our Sadhana Programs?')}</h2>
+            <p className="text-lg text-gray-600">{t('sadhana.features.subtitle', 'Authentic spiritual guidance and support')}</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: "👨‍🏫", title: "Expert Guidance", desc: "Experienced spiritual teachers" },
-              { icon: "📱", title: "Online Support", desc: "24/7 guidance and support" },
-              { icon: "🏠", title: "Home Practice", desc: "Practice from your home" }
+              { icon: "👨‍🏫", title: t('sadhana.features.items.expertGuidance.title', 'Expert Guidance'), desc: t('sadhana.features.items.expertGuidance.desc', 'Experienced spiritual teachers') },
+              { icon: "📱", title: t('sadhana.features.items.onlineSupport.title', 'Online Support'), desc: t('sadhana.features.items.onlineSupport.desc', '24/7 guidance and support') },
+              { icon: "🏠", title: t('sadhana.features.items.homePractice.title', 'Home Practice'), desc: t('sadhana.features.items.homePractice.desc', 'Practice from your home') }
             ].map((feature, index) => (
               <Card key={index} className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">

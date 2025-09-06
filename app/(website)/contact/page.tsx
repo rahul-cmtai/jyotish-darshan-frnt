@@ -65,13 +65,13 @@ export default function Contact() {
     
     // Message length validation
     if (formData.message.length < 10) {
-      errors.message = "Message must be at least 10 characters long"
+      errors.message = t('contact.messageMinLength', 'Message must be at least 10 characters long')
     }
     
     // Required fields validation
-    if (!formData.name.trim()) errors.name = "Name is required"
-    if (!formData.subject.trim()) errors.subject = "Subject is required"
-    if (!formData.inquiryType) errors.inquiryType = "Please select an inquiry type"
+    if (!formData.name.trim()) errors.name = t('contact.nameRequired', 'Name is required')
+    if (!formData.subject.trim()) errors.subject = t('contact.subjectRequired', 'Subject is required')
+    if (!formData.inquiryType) errors.inquiryType = t('contact.inquiryTypeRequired', 'Please select an inquiry type')
     
     setFieldErrors(errors)
     return Object.keys(errors).length === 0
@@ -378,7 +378,7 @@ export default function Contact() {
                       {fieldErrors["email"] && (
                         <p className="text-red-500 text-xs mt-1">{fieldErrors["email"]}</p>
                       )}
-                      <p className="text-xs text-gray-500 mt-1">Enter a valid email address</p>
+                      <p className="text-xs text-gray-500 mt-1">{t('contact.emailHelp', 'Enter a valid email address')}</p>
                     </div>
                   </div>
 
@@ -396,7 +396,7 @@ export default function Contact() {
                       {fieldErrors["phone"] && (
                         <p className="text-red-500 text-xs mt-1">{fieldErrors["phone"]}</p>
                       )}
-                      <p className="text-xs text-gray-500 mt-1">Optional - Enter with or without country code</p>
+                      <p className="text-xs text-gray-500 mt-1">{t('contact.phoneHelp', 'Optional - Enter with or without country code')}</p>
                     </div>
                     <div>
                       <Label htmlFor="inquiryType">{t('contact.inquiryType')} *</Label>
@@ -405,7 +405,7 @@ export default function Contact() {
                         onValueChange={(value) => handleInputChange("inquiryType", value)}
                       >
                         <SelectTrigger className="mt-1">
-                          <SelectValue placeholder="Select inquiry type" />
+                          <SelectValue placeholder={t('contact.selectInquiryType', 'Select inquiry type')} />
                         </SelectTrigger>
                         <SelectContent>
                           {inquiryTypes.map((type) => (
@@ -430,7 +430,7 @@ export default function Contact() {
                       onChange={(e) => handleInputChange("subject", e.target.value)}
                       required
                       className={`mt-1 ${fieldErrors["subject"] ? "border-red-500" : ""}`}
-                      placeholder="Brief description of your inquiry"
+                      placeholder={t('contact.subjectPlaceholder', 'Brief description of your inquiry')}
                     />
                     {fieldErrors["subject"] && (
                       <p className="text-red-500 text-xs mt-1">{fieldErrors["subject"]}</p>
@@ -444,20 +444,20 @@ export default function Contact() {
                       onValueChange={(value) => handleInputChange("preferredContact", value)}
                     >
                       <SelectTrigger className="mt-1">
-                        <SelectValue placeholder="How would you like us to respond?" />
+                        <SelectValue placeholder={t('contact.preferredContactPlaceholder', 'How would you like us to respond?')} />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="email">{t('contact.emailContact')}</SelectItem>
                         <SelectItem value="phone">{t('contact.phoneCall')}</SelectItem>
                         <SelectItem value="whatsapp">{t('contact.whatsapp')}</SelectItem>
-                        <SelectItem value="sms">SMS</SelectItem>
+                        <SelectItem value="sms">{t('contact.sms', 'SMS')}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div>
                     <Label htmlFor="message">{t('contact.message')} *</Label>
-                    <p className="text-xs text-gray-500 mb-1">Message must be between 10 and 2000 characters</p>
+                    <p className="text-xs text-gray-500 mb-1">{t('contact.messageLength', 'Message must be between 10 and 2000 characters')}</p>
                     <Textarea
                       id="message"
                       value={formData.message}
@@ -465,7 +465,7 @@ export default function Contact() {
                       required
                       className={`mt-1 ${fieldErrors["message"] ? "border-red-500" : ""}`}
                       rows={6}
-                      placeholder="Please provide details about your inquiry..."
+                      placeholder={t('contact.messagePlaceholder', 'Please provide details about your inquiry...')}
                       maxLength={2000}
                     />
                     <div className="flex justify-between items-center mt-1">
@@ -473,7 +473,7 @@ export default function Contact() {
                         <p className="text-red-500 text-xs">{fieldErrors["message"]}</p>
                       )}
                       <p className={`text-xs ml-auto ${formData.message.length < 10 ? 'text-red-500' : formData.message.length > 1800 ? 'text-orange-500' : 'text-gray-500'}`}>
-                        {formData.message.length}/2000 characters
+                        {formData.message.length}/2000 {t('contact.characters', 'characters')}
                       </p>
                     </div>
                   </div>
@@ -521,7 +521,7 @@ export default function Contact() {
 
                     <Button variant="outline" className="w-full">
                       <MapPin className="w-4 h-4 mr-2" />
-                      Get Directions
+                      {t('contact.getDirections', 'Get Directions')}
                     </Button>
                   </div>
                 </CardContent>
@@ -546,8 +546,7 @@ export default function Contact() {
                   </div>
                   <div className="mt-4 p-3 bg-orange-50 rounded-lg">
                     <p className="text-sm text-orange-800">
-                      <strong>Emergency Consultations:</strong> Available 24/7 for urgent matters. 
-                      Additional charges may apply for after-hours consultations.
+                      <strong>{t('contact.emergencyConsultations', 'Emergency Consultations:')}</strong> {t('contact.emergencyConsultationsText', 'Available 24/7 for urgent matters. Additional charges may apply for after-hours consultations.')}
                     </p>
                   </div>
                 </CardContent>
@@ -561,15 +560,15 @@ export default function Contact() {
                 <CardContent className="space-y-3">
                   <Button variant="outline" className="w-full justify-start">
                     <Calendar className="w-4 h-4 mr-2" />
-                    Schedule Consultation
+                    {t('contact.scheduleConsultation', 'Schedule Consultation')}
                   </Button>
                   <Button variant="outline" className="w-full justify-start">
                     <MessageCircle className="w-4 h-4 mr-2" />
-                    Live Chat Support
+                    {t('contact.liveChatSupport', 'Live Chat Support')}
                   </Button>
                   <Button variant="outline" className="w-full justify-start">
                     <Phone className="w-4 h-4 mr-2" />
-                    Request Callback
+                    {t('contact.requestCallback', 'Request Callback')}
                   </Button>
                 </CardContent>
               </Card>

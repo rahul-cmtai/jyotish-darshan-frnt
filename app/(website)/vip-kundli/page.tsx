@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useState } from "react"
+import { useTranslation } from "@/contexts/TranslationContext"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -35,6 +36,7 @@ import {
 } from "lucide-react"
 
 export default function VIPKundliPage() {
+  const { t } = useTranslation()
   const [formData, setFormData] = useState({
     name: "",
     date: "",
@@ -187,31 +189,31 @@ export default function VIPKundliPage() {
             <div className="flex items-center justify-center gap-3 mb-6">
               <Crown className="w-8 h-8 text-yellow-400" />
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                VIP Kundli Analysis
+                {t('vipKundli.hero.title', 'VIP Kundli Analysis')}
               </h1>
               <Crown className="w-8 h-8 text-yellow-400" />
             </div>
             
             <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-orange-100">
-              प्रीमियम कुंडली विश्लेषण
+              {t('vipKundli.hero.subtitle', 'प्रीमियम कुंडली विश्लेषण')}
             </h2>
             
             <p className="text-xl md:text-2xl text-orange-100 mb-8 max-w-3xl mx-auto">
-              Experience the most comprehensive and accurate astrological analysis with our premium VIP Kundli service.
+              {t('vipKundli.hero.description', 'Experience the most comprehensive and accurate astrological analysis with our premium VIP Kundli service.')}
             </p>
             
             <div className="flex flex-wrap justify-center gap-6 text-sm opacity-90">
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>Premium Analysis</span>
+                <span>{t('vipKundli.hero.features.premiumAnalysis', 'Premium Analysis')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>AI-Powered Insights</span>
+                <span>{t('vipKundli.hero.features.aiPoweredInsights', 'AI-Powered Insights')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-green-400" />
-                <span>Expert Consultation</span>
+                <span>{t('vipKundli.hero.features.expertConsultation', 'Expert Consultation')}</span>
               </div>
             </div>
           </motion.div>
@@ -236,8 +238,8 @@ export default function VIPKundliPage() {
                 className="mb-6 p-6 bg-green-50 border border-green-200 rounded-lg text-center"
               >
                 <div className="text-6xl mb-4">🙏</div>
-                <h3 className="text-2xl font-bold text-green-800 mb-2">Thank You!</h3>
-                <p className="text-green-700">Your VIP Kundli request has been submitted successfully. We'll get back to you soon!</p>
+                <h3 className="text-2xl font-bold text-green-800 mb-2">{t('vipKundli.thankYou.title', 'Thank You!')}</h3>
+                <p className="text-green-700">{t('vipKundli.thankYou.message', 'Your VIP Kundli request has been submitted successfully. We\'ll get back to you soon!')}</p>
               </motion.div>
             )}
             <Card className="p-8 bg-white shadow-xl border-0">
@@ -245,18 +247,18 @@ export default function VIPKundliPage() {
                 <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Crown className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Generate Your VIP Kundli</h3>
-                <p className="text-gray-600">Enter your birth details for premium analysis</p>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">{t('vipKundli.form.title', 'Generate Your VIP Kundli')}</h3>
+                <p className="text-gray-600">{t('vipKundli.form.subtitle', 'Enter your birth details for premium analysis')}</p>
               </div>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name
+                    {t('vipKundli.form.fields.fullName', 'Full Name')}
                   </label>
                   <Input
                     type="text"
-                    placeholder="Enter your full name"
+                    placeholder={t('vipKundli.form.placeholders.fullName', 'Enter your full name')}
                     value={formData.name}
                     onChange={(e) => handleInputChange("name", e.target.value)}
                     className="w-full"
@@ -266,7 +268,7 @@ export default function VIPKundliPage() {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Date of Birth
+                    {t('vipKundli.form.fields.dateOfBirth', 'Date of Birth')}
                   </label>
                   <Input
                     type="date"
@@ -279,7 +281,7 @@ export default function VIPKundliPage() {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Time of Birth
+                    {t('vipKundli.form.fields.timeOfBirth', 'Time of Birth')}
                   </label>
                   <Input
                     type="time"
@@ -292,11 +294,11 @@ export default function VIPKundliPage() {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Place of Birth
+                    {t('vipKundli.form.fields.placeOfBirth', 'Place of Birth')}
                   </label>
                   <Input
                     type="text"
-                    placeholder="City, State, Country"
+                    placeholder={t('vipKundli.form.placeholders.placeOfBirth', 'City, State, Country')}
                     value={formData.place}
                     onChange={(e) => handleInputChange("place", e.target.value)}
                     className="w-full"
@@ -306,27 +308,27 @@ export default function VIPKundliPage() {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Gender
+                    {t('vipKundli.form.fields.gender', 'Gender')}
                   </label>
                   <Select value={formData.gender} onValueChange={(value) => handleInputChange("gender", value)}>
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select gender" />
+                      <SelectValue placeholder={t('vipKundli.form.placeholders.gender', 'Select gender')} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="male">Male</SelectItem>
-                      <SelectItem value="female">Female</SelectItem>
-                      <SelectItem value="other">Other</SelectItem>
+                      <SelectItem value="male">{t('vipKundli.form.options.male', 'Male')}</SelectItem>
+                      <SelectItem value="female">{t('vipKundli.form.options.female', 'Female')}</SelectItem>
+                      <SelectItem value="other">{t('vipKundli.form.options.other', 'Other')}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Mobile Number
+                    {t('vipKundli.form.fields.mobileNumber', 'Mobile Number')}
                   </label>
                   <Input
                     type="tel"
-                    placeholder="Enter your mobile number"
+                    placeholder={t('vipKundli.form.placeholders.mobileNumber', 'Enter your mobile number')}
                     value={formData.mobile}
                     onChange={(e) => handleInputChange("mobile", e.target.value)}
                     className="w-full"
@@ -336,10 +338,10 @@ export default function VIPKundliPage() {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Kundli
+                    {t('vipKundli.form.fields.kundli', 'Kundli')}
                   </label>
                   <div className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md text-gray-700 font-medium">
-                    VIP Kundli
+                    {t('vipKundli.form.fields.kundli', 'VIP Kundli')}
                   </div>
                 </div>
                 
@@ -347,7 +349,7 @@ export default function VIPKundliPage() {
                   type="submit" 
                   className="w-full bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white py-3 text-lg font-semibold"
                 >
-                 Submit
+                 {t('vipKundli.form.submit', 'Submit')}
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </form>
@@ -357,9 +359,9 @@ export default function VIPKundliPage() {
           {/* VIP Features Section */}
           <motion.div variants={itemVariants} className="space-y-6">
             <div className="text-center lg:text-left">
-              <h3 className="text-3xl font-bold text-gray-900 mb-6">VIP Exclusive Features</h3>
+              <h3 className="text-3xl font-bold text-gray-900 mb-6">{t('vipKundli.features.title', 'VIP Exclusive Features')}</h3>
               <p className="text-lg text-gray-600 mb-8">
-                Get access to the most advanced astrological insights and personalized guidance with our premium service.
+                {t('vipKundli.features.description', 'Get access to the most advanced astrological insights and personalized guidance with our premium service.')}
               </p>
             </div>
             
@@ -370,8 +372,8 @@ export default function VIPKundliPage() {
                     <Eye className="w-6 h-6 text-orange-600" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Deep Analysis</h4>
-                    <p className="text-gray-600">Comprehensive study of all planetary positions and their influences on your life.</p>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">{t('vipKundli.features.items.deepAnalysis.title', 'Deep Analysis')}</h4>
+                    <p className="text-gray-600">{t('vipKundli.features.items.deepAnalysis.description', 'Comprehensive study of all planetary positions and their influences on your life.')}</p>
                   </div>
                 </div>
               </Card>
@@ -382,8 +384,8 @@ export default function VIPKundliPage() {
                     <Brain className="w-6 h-6 text-red-600" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">AI-Powered Insights</h4>
-                    <p className="text-gray-600">Advanced algorithms provide accurate predictions and personalized recommendations.</p>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">{t('vipKundli.features.items.aiPoweredInsights.title', 'AI-Powered Insights')}</h4>
+                    <p className="text-gray-600">{t('vipKundli.features.items.aiPoweredInsights.description', 'Advanced algorithms provide accurate predictions and personalized recommendations.')}</p>
                   </div>
                 </div>
               </Card>
@@ -394,8 +396,8 @@ export default function VIPKundliPage() {
                     <Target className="w-6 h-6 text-yellow-600" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Life Path Guidance</h4>
-                    <p className="text-gray-600">Clear direction for career, relationships, health, and spiritual growth.</p>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">{t('vipKundli.features.items.lifePathGuidance.title', 'Life Path Guidance')}</h4>
+                    <p className="text-gray-600">{t('vipKundli.features.items.lifePathGuidance.description', 'Clear direction for career, relationships, health, and spiritual growth.')}</p>
                   </div>
                 </div>
               </Card>
@@ -406,8 +408,8 @@ export default function VIPKundliPage() {
                     <Users className="w-6 h-6 text-purple-600" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Expert Consultation</h4>
-                    <p className="text-gray-600">One-on-one sessions with certified astrologers for personalized guidance.</p>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">{t('vipKundli.features.items.expertConsultation.title', 'Expert Consultation')}</h4>
+                    <p className="text-gray-600">{t('vipKundli.features.items.expertConsultation.description', 'One-on-one sessions with certified astrologers for personalized guidance.')}</p>
                   </div>
                 </div>
               </Card>
@@ -425,8 +427,8 @@ export default function VIPKundliPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Planetary Influences</h2>
-            <p className="text-lg text-gray-600">Understanding the key planets and their significance in your kundli</p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('vipKundli.planetaryInfluences.title', 'Planetary Influences')}</h2>
+            <p className="text-lg text-gray-600">{t('vipKundli.planetaryInfluences.description', 'Understanding the key planets and their significance in your kundli')}</p>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -465,8 +467,8 @@ export default function VIPKundliPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">The 12 Houses</h2>
-            <p className="text-lg text-gray-600">Each house represents different aspects of your life journey</p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('vipKundli.houses.title', 'The 12 Houses')}</h2>
+            <p className="text-lg text-gray-600">{t('vipKundli.houses.description', 'Each house represents different aspects of your life journey')}</p>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -501,16 +503,16 @@ export default function VIPKundliPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl font-bold mb-4">Ready for VIP Analysis?</h2>
+            <h2 className="text-3xl font-bold mb-4">{t('vipKundli.cta.title', 'Ready for VIP Analysis?')}</h2>
             <p className="text-lg opacity-90 mb-8">
-              Get your premium kundli analysis and unlock the deepest secrets of your birth chart
+              {t('vipKundli.cta.description', 'Get your premium kundli analysis and unlock the deepest secrets of your birth chart')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="bg-white text-orange-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold">
-                Generate VIP Kundli Now
+                {t('vipKundli.cta.generateNow', 'Generate VIP Kundli Now')}
               </Button>
               <Button variant="outline" className="border-white text-white hover:bg-white hover:text-orange-600 px-8 py-3 text-lg font-semibold">
-                Book Expert Consultation
+                {t('vipKundli.cta.bookConsultation', 'Book Expert Consultation')}
               </Button>
             </div>
           </motion.div>
@@ -525,31 +527,31 @@ export default function VIPKundliPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Need Expert Guidance?</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">{t('vipKundli.contact.title', 'Need Expert Guidance?')}</h2>
             <p className="text-lg text-gray-600 mb-8">
-              Our experienced astrologers are here to help you understand your kundli better
+              {t('vipKundli.contact.description', 'Our experienced astrologers are here to help you understand your kundli better')}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="flex flex-col items-center gap-3">
                 <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
                   <Phone className="w-6 h-6 text-orange-600" />
                 </div>
-                <h3 className="font-semibold text-gray-900">Call Us</h3>
+                <h3 className="font-semibold text-gray-900">{t('vipKundli.contact.callUs', 'Call Us')}</h3>
                 <p className="text-gray-600">+91 9773380099</p>
               </div>
               <div className="flex flex-col items-center gap-3">
                 <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
                   <Mail className="w-6 h-6 text-red-600" />
                 </div>
-                <h3 className="font-semibold text-gray-900">Email Us</h3>
+                <h3 className="font-semibold text-gray-900">{t('vipKundli.contact.emailUs', 'Email Us')}</h3>
                 <p className="text-gray-600">info@jyotidarshan.com</p>
               </div>
               <div className="flex flex-col items-center gap-3">
                 <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
                   <MessageCircle className="w-6 h-6 text-yellow-600" />
                 </div>
-                <h3 className="font-semibold text-gray-900">Chat Now</h3>
-                <p className="text-gray-600">Live consultation</p>
+                <h3 className="font-semibold text-gray-900">{t('vipKundli.contact.chatNow', 'Chat Now')}</h3>
+                <p className="text-gray-600">{t('vipKundli.contact.liveConsultation', 'Live consultation')}</p>
               </div>
             </div>
           </motion.div>

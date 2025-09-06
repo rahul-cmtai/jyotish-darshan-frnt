@@ -248,7 +248,7 @@ export default function Gallery() {
                   autoPlay
                   className="max-w-full max-h-[90vh] object-contain"
                 >
-                  Your browser does not support the video tag.
+                  {t('gallery.videoNotSupported', 'Your browser does not support the video tag.')}
                 </video>
               ) : (
                 <img

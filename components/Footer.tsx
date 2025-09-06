@@ -5,6 +5,16 @@ import LanguageSwitcher from './LanguageSwitcher'
 
 export default function Footer() {
   const { t } = useTranslation()
+  
+  const serviceLinks = [
+    { name: "पूजाएं", href: "/services/pujas", englishName: "Puja Services" },
+    { name: "किताबें", href: "/services/books", englishName: "Sacred Books" },
+    { name: "रत्न", href: "/services/ratna", englishName: "Gemstones" },
+    { name: "रुद्राक्ष", href: "/services/rudraksha", englishName: "Rudraksha" },
+    { name: "साधना", href: "/services/sadhana", englishName: "Sadhana Programs" },
+    { name: "यंत्र", href: "/services/yantra", englishName: "Yantras" },
+  ]
+
   return (
     <footer className="bg-black text-white relative overflow-hidden">
       {/* Subtle Background Pattern */}
@@ -25,12 +35,11 @@ export default function Footer() {
                 <h3 className="text-3xl font-bold text-orange-500">
                   Jyotish Lok
                 </h3>
-                <p className="text-sm text-gray-400 mt-1">Divine Astrological Guidance</p>
+                <p className="text-sm text-gray-400 mt-1">{t('footer.divineAstrologicalGuidance', 'Divine Astrological Guidance')}</p>
               </div>
             </div>
             <p className="text-gray-300 mb-8 max-w-md text-lg leading-relaxed">
-              Your trusted partner in spiritual growth and astrological guidance. 
-              Experience the ancient wisdom of Vedic astrology and sacred practices.
+              {t('footer.companyDescription', 'Your trusted partner in spiritual growth and astrological guidance. Experience the ancient wisdom of Vedic astrology and sacred practices.')}
             </p>
             <div className="flex space-x-4">
               <a href="#" className="group w-12 h-12 bg-gray-800 hover:bg-[#F37D00] rounded-full flex items-center justify-center transition-all duration-300 border border-gray-700 hover:border-[#F37D00]">
@@ -51,32 +60,32 @@ export default function Footer() {
           {/* Quick Links */}
           <div>
             <h4 className="text-xl font-bold mb-8 text-orange-500">
-              Quick Links
+              {t('footer.quickLinks', 'Quick Links')}
             </h4>
             <ul className="space-y-4">
               <li><a href="/" className="text-gray-300 hover:text-orange-500 transition-all duration-300 flex items-center group">
                 <span className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 group-hover:scale-150 transition-transform"></span>
-                Home
+                {t('footer.home', 'Home')}
               </a></li>
               <li><a href="/about" className="text-gray-300 hover:text-orange-500 transition-all duration-300 flex items-center group">
                 <span className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 group-hover:scale-150 transition-transform"></span>
-                {t('footer.about')}
+                {t('footer.about', 'About Us')}
               </a></li>
               <li><a href="/daily-horoscope" className="text-gray-300 hover:text-orange-500 transition-all duration-300 flex items-center group">
                 <span className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 group-hover:scale-150 transition-transform"></span>
-                Daily Horoscope
+                {t('footer.dailyHoroscope', 'Daily Horoscope')}
               </a></li>
               <li><a href="/vip-kundli" className="text-gray-300 hover:text-orange-500 transition-all duration-300 flex items-center group">
                 <span className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 group-hover:scale-150 transition-transform"></span>
-                VIP Kundli
+                {t('footer.vipKundli', 'VIP Kundli')}
               </a></li>
               <li><a href="/samanye-kundli" className="text-gray-300 hover:text-orange-500 transition-all duration-300 flex items-center group">
                 <span className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 group-hover:scale-150 transition-transform"></span>
-                Samanye Kundli
+                {t('footer.samanyeKundli', 'Samanye Kundli')}
               </a></li>
               <li><a href="/contact" className="text-gray-300 hover:text-orange-500 transition-all duration-300 flex items-center group">
                 <span className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 group-hover:scale-150 transition-transform"></span>
-                {t('footer.contact')}
+                {t('footer.contact', 'Contact')}
               </a></li>
             </ul>
           </div>
@@ -84,40 +93,26 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h4 className="text-xl font-bold mb-8 text-orange-500">
-              {t('footer.services')}
+              {t('footer.services', 'Services')}
             </h4>
             <ul className="space-y-4">
-              <li><a href="/services/pujas" className="text-gray-300 hover:text-orange-500 transition-all duration-300 flex items-center group">
-                <span className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 group-hover:scale-150 transition-transform"></span>
-                Puja Services
-              </a></li>
-              <li><a href="/services/books" className="text-gray-300 hover:text-orange-500 transition-all duration-300 flex items-center group">
-                <span className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 group-hover:scale-150 transition-transform"></span>
-                Sacred Books
-              </a></li>
-              <li><a href="/services/ratna" className="text-gray-300 hover:text-orange-500 transition-all duration-300 flex items-center group">
-                <span className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 group-hover:scale-150 transition-transform"></span>
-                Gemstones
-              </a></li>
-              <li><a href="/services/rudraksha" className="text-gray-300 hover:text-orange-500 transition-all duration-300 flex items-center group">
-                <span className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 group-hover:scale-150 transition-transform"></span>
-                Rudraksha
-              </a></li>
-              <li><a href="/services/sadhana" className="text-gray-300 hover:text-orange-500 transition-all duration-300 flex items-center group">
-                <span className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 group-hover:scale-150 transition-transform"></span>
-                Sadhana Programs
-              </a></li>
-              <li><a href="/services/yantra" className="text-gray-300 hover:text-orange-500 transition-all duration-300 flex items-center group">
-                <span className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 group-hover:scale-150 transition-transform"></span>
-                Yantras
-              </a></li>
+              {serviceLinks.map((service) => (
+                <li key={service.href}>
+                  <a href={service.href} className="text-gray-300 hover:text-orange-500 transition-all duration-300 flex items-center group">
+                    <span className="w-1.5 h-1.5 bg-orange-500 rounded-full mr-3 group-hover:scale-150 transition-transform"></span>
+                    <div className="flex flex-col">
+                      <span className="font-medium">{service.name}</span>
+                    </div>
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact Info - New Section */}
           <div>
             <h4 className="text-xl font-bold mb-8 text-orange-500">
-              Contact Info
+              {t('footer.contactInfo', 'Contact Info')}
             </h4>
             <div className="space-y-6">
               {/* Phone */}
@@ -126,7 +121,7 @@ export default function Footer() {
                   <span className="text-orange-500 text-lg">📞</span>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-400">Phone</p>
+                  <p className="text-sm text-gray-400">{t('footer.phone', 'Phone')}</p>
                   <p className="text-orange-500 font-semibold">+91 9773380099</p>
                 </div>
               </div>
@@ -137,7 +132,7 @@ export default function Footer() {
                 <span className="text-orange-500 text-lg">📧</span>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-400">Email</p>
+                  <p className="text-sm text-gray-400">{t('footer.email', 'Email')}</p>
                   <p className="text-orange-500 font-semibold">info@jyotidarshan.in</p>
                 </div>
               </div>
@@ -148,7 +143,7 @@ export default function Footer() {
                   <span className="text-orange-500 text-lg">🌐</span>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-400">Website</p>
+                  <p className="text-sm text-gray-400">{t('footer.website', 'Website')}</p>
                   <p className="text-orange-500 font-semibold">jyotidarshan.com</p>
                 </div>
               </div>

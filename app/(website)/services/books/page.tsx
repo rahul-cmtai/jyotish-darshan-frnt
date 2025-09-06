@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Star, ShoppingCart, Search, BookOpen, Download } from "lucide-react"
 import { Textarea } from "@/components/ui/textarea"
 
@@ -267,15 +266,15 @@ export default function Books() {
           <div className="flex flex-wrap justify-center gap-6 text-sm opacity-90">
             <div className="flex items-center gap-2">
               <span className="text-2xl">📚</span>
-              <span>Authentic Content</span>
+              <span>{t('books.hero.features.authentic', 'Authentic Content')}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-2xl">🙏</span>
-              <span>Expert Authors</span>
+              <span>{t('books.hero.features.experts', 'Expert Authors')}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-2xl">📖</span>
-              <span>Multiple Languages</span>
+              <span>{t('books.hero.features.languages', 'Multiple Languages')}</span>
             </div>
           </div>
         </div>
@@ -286,20 +285,20 @@ export default function Books() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="bg-white rounded-3xl p-8 shadow-2xl border border-orange-100">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-800 mb-2">🔍 Find Your Perfect Book</h2>
-              <p className="text-gray-600">Filter by category, language and author</p>
+              <h2 className="text-3xl font-bold text-gray-800 mb-2">{t('books.search.title', '🔍 Find Your Perfect Book')}</h2>
+              <p className="text-gray-600">{t('books.search.subtitle', 'Filter by category, language and author')}</p>
             </div>
             
             <div className="grid md:grid-cols-4 gap-6 mb-8">
               <div>
                 <label className="text-sm font-semibold text-gray-700 mb-3 flex items-center">
                   <Search className="w-4 h-4 mr-2 text-orange-600" />
-                  Search Books
+                  {t('books.search.labels.search', 'Search Books')}
                 </label>
                 <div className="relative">
                   <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                   <Input
-                    placeholder="Search books, author, or description..."
+                    placeholder={t('books.search.placeholders.search', 'Search books, author, or description...')}
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="pl-12 py-3 border-2 border-orange-200 focus:border-orange-400 rounded-xl"
@@ -310,14 +309,14 @@ export default function Books() {
               <div>
                 <label className="text-sm font-semibold text-gray-700 mb-3 flex items-center">
                   <BookOpen className="w-4 h-4 mr-2 text-orange-600" />
-                  Category
+                  {t('books.search.labels.category', 'Category')}
                 </label>
                 <Select value={selectedCategory} onValueChange={setSelectedCategory}>
                   <SelectTrigger className="py-3 border-2 border-orange-200 focus:border-orange-400 rounded-xl">
-                    <SelectValue placeholder="Select Category" />
+                    <SelectValue placeholder={t('books.search.placeholders.category', 'Select Category')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Categories</SelectItem>
+                    <SelectItem value="all">{t('books.search.options.allCategories', 'All Categories')}</SelectItem>
                     {displayCategories.map((category) => (
                       <SelectItem key={category.id} value={category.id}>
                         {category.name}
@@ -329,14 +328,14 @@ export default function Books() {
               
               <div>
                 <label className="text-sm font-semibold text-gray-700 mb-3 flex items-center">
-                  🌍 Language
+                  🌍 {t('books.search.labels.language', 'Language')}
                 </label>
                 <Select value={language} onValueChange={setLanguage}>
                   <SelectTrigger className="py-3 border-2 border-orange-200 focus:border-orange-400 rounded-xl">
-                    <SelectValue placeholder="Select Language" />
+                    <SelectValue placeholder={t('books.search.placeholders.language', 'Select Language')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Languages</SelectItem>
+                    <SelectItem value="all">{t('books.search.options.allLanguages', 'All Languages')}</SelectItem>
                     {displayLanguages.map((lang) => (
                       <SelectItem key={lang.id} value={lang.id}>
                         {lang.name}
@@ -349,25 +348,25 @@ export default function Books() {
               <div className="flex items-end">
                 <Button className="w-full py-3 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all">
                   <Search className="w-5 h-5 mr-2" />
-                  Search Now
+                  {t('books.search.button', 'Search Now')}
                 </Button>
               </div>
             </div>
             
             {/* Quick Filter Tags */}
             <div className="flex flex-wrap justify-center gap-3">
-              <div className="text-sm text-gray-600 mr-4">Quick Filters:</div>
+              <div className="text-sm text-gray-600 mr-4">{t('books.search.quickFilters', 'Quick Filters:')}</div>
               <button className="px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm hover:bg-orange-200 transition-colors">
-                ✨ Bestsellers
+                {t('books.search.tags.bestsellers', '✨ Bestsellers')}
               </button>
               <button className="px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm hover:bg-green-200 transition-colors">
-                📚 New Arrivals
+                {t('books.search.tags.newArrivals', '📚 New Arrivals')}
               </button>
               <button className="px-4 py-2 bg-yellow-100 text-yellow-700 rounded-full text-sm hover:bg-yellow-200 transition-colors">
-                🏆 Top Rated
+                {t('books.search.tags.topRated', '🏆 Top Rated')}
               </button>
               <button className="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm hover:bg-purple-200 transition-colors">
-                💰 Best Deals
+                {t('books.search.tags.bestDeals', '💰 Best Deals')}
               </button>
             </div>
           </div>
@@ -378,9 +377,9 @@ export default function Books() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Available Books Collection</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">{t('books.collection.title', 'Available Books Collection')}</h2>
             <p className="text-gray-600">
-              {filteredBooks.length} books found 
+              {t('books.collection.count', `${filteredBooks.length} books found`)}
               {books.length > 0 && ` (${books.length} total from API)`}
             </p>
             {process.env.NODE_ENV === 'development' && (
@@ -395,7 +394,7 @@ export default function Books() {
               <Card key={book.id} className="group relative overflow-hidden hover:shadow-2xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-orange-50">
                 {book.bestseller && (
                   <Badge className="absolute top-3 left-3 z-10 bg-gradient-to-r from-yellow-500 to-orange-500 text-white shadow-lg">
-                    ✨ Bestseller
+                    ✨ {t('books.labels.bestseller', 'Bestseller')}
                   </Badge>
                 )}
                 
@@ -437,11 +436,11 @@ export default function Books() {
                   {/* Book Details */}
                   <div className="grid grid-cols-2 gap-2 mb-4 text-sm">
                     <div className="bg-gray-50 px-3 py-2 rounded-lg text-center">
-                      <div className="text-xs text-gray-600">Pages</div>
+                      <div className="text-xs text-gray-600">{t('books.labels.pages', 'Pages')}</div>
                       <div className="font-semibold text-sm">{book.pages}</div>
                     </div>
                     <div className="bg-gray-50 px-3 py-2 rounded-lg text-center">
-                      <div className="text-xs text-gray-600">Language</div>
+                      <div className="text-xs text-gray-600">{t('books.labels.language', 'Language')}</div>
                       <div className="font-semibold text-sm">{book.language}</div>
                     </div>
                   </div>
@@ -473,7 +472,7 @@ export default function Books() {
                       }}
                     >
                       <ShoppingCart className="w-4 h-4 mr-2" />
-                      Buy Now
+                      {t('books.labels.buyNow', 'Buy Now')}
                     </Button>
                   </div>
                 </CardContent>
@@ -520,15 +519,15 @@ export default function Books() {
       <section className="py-16 bg-gradient-to-r from-orange-50 to-red-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Why Choose Our Books?</h2>
-            <p className="text-lg text-gray-600">Authentic and sacred knowledge</p>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">{t('books.features.title', 'Why Choose Our Books?')}</h2>
+            <p className="text-lg text-gray-600">{t('books.features.subtitle', 'Authentic and sacred knowledge')}</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: "✅", title: "Authentic Content", desc: "Books written by experts", color: "from-green-500 to-emerald-500" },
-              { icon: "🔄", title: "Easy Returns", desc: "30-day return policy", color: "from-blue-500 to-cyan-500" },
-              { icon: "🚚", title: "Fast Delivery", desc: "Free shipping on orders above ₹500", color: "from-orange-500 to-red-500" }
+              { icon: "✅", title: t('books.features.items.authentic.title', 'Authentic Content'), desc: t('books.features.items.authentic.desc', 'Books written by experts'), color: "from-green-500 to-emerald-500" },
+              { icon: "🔄", title: t('books.features.items.returns.title', 'Easy Returns'), desc: t('books.features.items.returns.desc', '30-day return policy'), color: "from-blue-500 to-cyan-500" },
+              { icon: "🚚", title: t('books.features.items.delivery.title', 'Fast Delivery'), desc: t('books.features.items.delivery.desc', 'Free shipping on orders above ₹500'), color: "from-orange-500 to-red-500" }
             ].map((feature, index) => (
               <Card key={index} className="text-center hover:shadow-2xl transition-all duration-300 border-0 bg-white/80 backdrop-blur-sm hover:bg-white">
                 <CardContent className="p-6">
@@ -548,17 +547,17 @@ export default function Books() {
       <section className="py-16 bg-gradient-to-r from-orange-600 to-red-500 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Start Your Spiritual Journey Today
+            {t('books.cta.title', 'Start Your Spiritual Journey Today')}
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Get authentic knowledge from sacred books
+            {t('books.cta.subtitle', 'Get authentic knowledge from sacred books')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="bg-white text-orange-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-              Explore Books
+              {t('books.cta.explore', 'Explore Books')}
             </Button>
             <Button variant="outline" className="border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-orange-600">
-              Call: +91 9773380099
+              {t('books.cta.call', 'Call: +91 9773380099')}
             </Button>
           </div>
         </div>
@@ -570,7 +569,7 @@ export default function Books() {
           <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             <CardHeader className="bg-gradient-to-r from-orange-600 to-red-600 text-white">
               <CardTitle className="text-2xl flex items-center justify-between">
-                🛒 Checkout - {selectedProduct.name}
+                {t('books.checkout.title', { productName: selectedProduct.name })} 
                 <Button 
                   variant="ghost" 
                   size="sm" 
@@ -587,18 +586,18 @@ export default function Books() {
             <CardContent className="p-6">
               {/* Order Summary */}
               <div className="bg-orange-50 p-4 rounded-lg mb-6 border border-orange-200">
-                <h3 className="font-bold text-lg text-orange-800 mb-2">📋 Order Summary</h3>
+                <h3 className="font-bold text-lg text-orange-800 mb-2">{t('books.checkout.orderSummary', '📋 Order Summary')}</h3>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span>Product:</span>
+                    <span>{t('books.checkout.product', 'Product:')}</span>
                     <span className="font-medium">{selectedProduct.name}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Author:</span>
+                    <span>{t('books.checkout.author', 'Author:')}</span>
                     <span className="font-medium">{selectedProduct.author}</span>
                   </div>
                   <div className="flex justify-between text-lg font-bold text-orange-600 pt-2 border-t">
-                    <span>Total Amount:</span>
+                    <span>{t('books.checkout.totalAmount', 'Total Amount:')}</span>
                     <span>₹{selectedProduct.price.toLocaleString()}</span>
                   </div>
                 </div>
@@ -607,14 +606,14 @@ export default function Books() {
               {/* Checkout Form */}
               <form onSubmit={handleCheckoutSubmit} className="space-y-4">
                 <div className="text-center mb-6">
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">📝 Delivery Information</h3>
-                  <p className="text-gray-600">Please fill in your details for delivery</p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">{t('books.checkout.deliveryInfo', '📝 Delivery Information')}</h3>
+                  <p className="text-gray-600">{t('books.checkout.deliveryDesc', 'Please fill in your details for delivery')}</p>
                 </div>
 
                 {/* Fixed Product Name Field */}
                 <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
                   <label className="block text-sm font-medium text-orange-800 mb-2">
-                    🛍️ Product Name
+                    {t('books.checkout.productName', '🛍️ Product Name')}
                   </label>
                   <Input
                     type="text"
@@ -628,7 +627,7 @@ export default function Books() {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      👤 Full Name *
+                      👤 {t('books.checkout.fullName', 'Full Name *')}
                     </label>
                     <Input
                       type="text"
@@ -642,7 +641,7 @@ export default function Books() {
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      📱 Mobile Number *
+                      📱 {t('books.checkout.mobile', 'Mobile Number *')}
                     </label>
                     <Input
                       type="tel"
@@ -658,7 +657,7 @@ export default function Books() {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      📞 Alternative Mobile
+                      📞 {t('books.checkout.alternativeMobile', 'Alternative Mobile')}
                     </label>
                     <Input
                       type="tel"
@@ -671,7 +670,7 @@ export default function Books() {
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      📮 PIN Code *
+                      📮 {t('books.checkout.pincode', 'PIN Code *')}
                     </label>
                     <Input
                       type="text"
@@ -686,7 +685,7 @@ export default function Books() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    🏠 Complete Address *
+                    🏠 {t('books.checkout.address', 'Complete Address *')}
                   </label>
                   <Textarea
                     required
@@ -701,7 +700,7 @@ export default function Books() {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      🏙️ City *
+                      🏙️ {t('books.checkout.city', 'City *')}
                     </label>
                     <Input
                       type="text"
@@ -715,7 +714,7 @@ export default function Books() {
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      🗺️ State *
+                      🗺️ {t('books.checkout.state', 'State *')}
                     </label>
                     <Input
                       type="text"
@@ -730,7 +729,7 @@ export default function Books() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    📝 Special Instructions (Optional)
+                    📝 {t('books.checkout.specialInstructions', 'Special Instructions (Optional)')}
                   </label>
                   <Textarea
                     value={checkoutData.specialInstructions}
@@ -743,13 +742,13 @@ export default function Books() {
 
                 {/* Important Notes */}
                 <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                  <h4 className="font-bold text-blue-800 mb-2">📌 Important Information</h4>
+                  <h4 className="font-bold text-blue-800 mb-2">{t('books.checkout.importantInfo', '📌 Important Information')}</h4>
                   <div className="text-sm text-blue-700 space-y-1">
-                    <p>• Free shipping across India</p>
-                    <p>• Delivery within 5-7 working days</p>
-                    <p>• COD available (Cash on Delivery)</p>
-                    <p>• 30-day return policy</p>
-                    <p>• Authentic content guaranteed</p>
+                    <p>• {t('books.checkout.freeShipping', 'Free shipping across India')}</p>
+                    <p>• {t('books.checkout.deliveryTime', 'Delivery within 5-7 working days')}</p>
+                    <p>• {t('books.checkout.codAvailable', 'COD available (Cash on Delivery)')}</p>
+                    <p>• {t('books.checkout.returnPolicy', '30-day return policy')}</p>
+                    <p>• {t('books.checkout.authenticGuarantee', 'Authentic content guaranteed')}</p>
                   </div>
                 </div>
 
@@ -764,13 +763,13 @@ export default function Books() {
                       setSelectedProduct(null)
                     }}
                   >
-                    ← Back
+                    {t('books.checkout.back', '← Back')}
                   </Button>
                   <Button 
                     type="submit"
                     className="flex-1 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold py-3"
                   >
-                    💳 Proceed to Payment
+                    {t('books.checkout.proceedToPayment', '💳 Proceed to Payment')}
                   </Button>
                 </div>
               </form>

@@ -16,15 +16,6 @@ export default function Header() {
   const router = useRouter()
   const { t } = useTranslation()
 
-  const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
-    { name: "Blog", href: "/blog" },
-    {name: "gallery", href: "/gallery"},
-    { name: "Contact", href: "/contact" },
-
-  ]
-
   const serviceLinks = [
     { name: "रत्न", href: "/services/ratna", englishName: "Gemstones" },
     { name: "रुद्राक्ष", href: "/services/rudraksha", englishName: "Rudraksha" },
@@ -117,7 +108,6 @@ export default function Header() {
                   >
                     <div className="flex flex-col">
                       <span className="font-medium">{service.name}</span>
-                      <span className="text-xs text-gray-500">{service.englishName}</span>
                     </div>
                   </DropdownMenuItem>
                 ))}
@@ -136,10 +126,10 @@ export default function Header() {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-48">
                 <DropdownMenuItem onClick={() => handleNavigation("/vip-kundli")}>
-                  VIP Kundli
+                  {t('website.vipKundli', 'VIP Kundli')}
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => handleNavigation("/samanye-kundli")}>
-                  Samanye Kundli
+                  {t('website.samanyeKundli', 'Samanye Kundli')}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -276,13 +266,13 @@ export default function Header() {
                       onClick={() => handleNavigation("/vip-kundli")}
                       className="text-left font-medium transition-colors text-gray-600 hover:text-orange-500 block w-full py-1"
                     >
-                      VIP Kundli
+                      {t('website.vipKundli', 'VIP Kundli')}
                     </button>
                     <button
                       onClick={() => handleNavigation("/samanye-kundli")}
                       className="text-left font-medium transition-colors text-gray-600 hover:text-orange-500 block w-full py-1"
                     >
-                      Samanye Kundli
+                      {t('website.samanyeKundli', 'Samanye Kundli')}
                     </button>
                   </div>
                 )}

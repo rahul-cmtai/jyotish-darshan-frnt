@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Star, ShoppingCart, Search, Triangle, Hexagon, Loader2 } from "lucide-react"
 import { Textarea } from "@/components/ui/textarea"
 import Image from "next/image"
@@ -139,11 +138,11 @@ export default function Yantra() {
   // Dummy data removed - now using API data from yantras state
 
   const priceRanges = [
-    { id: "all", name: "All Prices" },
-    { id: "0-1500", name: "Under ₹1,500" },
-    { id: "1500-2500", name: "₹1,500 - ₹2,500" },
-    { id: "2500-3500", name: "₹2,500 - ₹3,500" },
-    { id: "3500+", name: "Above ₹3,500" }
+    { id: "all", name: t('yantra.priceRanges.all', 'All Prices') },
+    { id: "0-1500", name: t('yantra.priceRanges.under1500', 'Under ₹1,500') },
+    { id: "1500-2500", name: t('yantra.priceRanges.1500to2500', '₹1,500 - ₹2,500') },
+    { id: "2500-3500", name: t('yantra.priceRanges.2500to3500', '₹2,500 - ₹3,500') },
+    { id: "3500+", name: t('yantra.priceRanges.above3500', 'Above ₹3,500') }
   ]
 
   const filteredYantras = yantras.filter(yantra => {
@@ -238,15 +237,15 @@ export default function Yantra() {
           <div className="flex flex-wrap justify-center gap-6 text-sm opacity-90">
             <div className="flex items-center gap-2">
               <span className="text-2xl">🔯</span>
-              <span>Properly Energized</span>
+              <span>{t('yantra.hero.features.energized', 'Properly Energized')}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-2xl">🙏</span>
-              <span>Expert Installation</span>
+              <span>{t('yantra.hero.features.installation', 'Expert Installation')}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-2xl">⚡</span>
-              <span>Immediate Benefits</span>
+              <span>{t('yantra.hero.features.benefits', 'Immediate Benefits')}</span>
             </div>
           </div>
         </div>
@@ -257,20 +256,20 @@ export default function Yantra() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="bg-white rounded-3xl p-8 shadow-2xl border border-orange-100">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-800 mb-2">🔍 Find Your Perfect Yantra</h2>
-              <p className="text-gray-600">Filter by category, price and deity</p>
+              <h2 className="text-3xl font-bold text-gray-800 mb-2">{t('yantra.search.title', '🔍 Find Your Perfect Yantra')}</h2>
+              <p className="text-gray-600">{t('yantra.search.subtitle', 'Filter by category, price and deity')}</p>
             </div>
             
             <div className="grid md:grid-cols-4 gap-6 mb-8">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center">
                   <Search className="w-4 h-4 mr-2 text-orange-600" />
-                  Search Yantras
+                  {t('yantra.search.labels.search', 'Search Yantras')}
                 </label>
                 <div className="relative">
                   <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                   <Input
-                    placeholder="Search yantra, deity, or benefits..."
+                    placeholder={t('yantra.search.placeholders.search', 'Search yantra, deity, or benefits...')}
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="pl-12 py-3 border-2 border-orange-200 focus:border-orange-400 rounded-xl"
@@ -281,11 +280,11 @@ export default function Yantra() {
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center">
                   <Triangle className="w-4 h-4 mr-2 text-orange-600" />
-                  Category
+                  {t('yantra.search.labels.category', 'Category')}
                 </label>
                 <Select value={selectedCategory} onValueChange={setSelectedCategory}>
                   <SelectTrigger className="py-3 border-2 border-orange-200 focus:border-orange-400 rounded-xl">
-                    <SelectValue placeholder="Select Category" />
+                    <SelectValue placeholder={t('yantra.search.placeholders.category', 'Select Category')} />
                   </SelectTrigger>
                   <SelectContent>
                     {yantraCategories.map((category) => (
@@ -299,11 +298,11 @@ export default function Yantra() {
               
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center">
-                  💰 Price Range
+                  💰 {t('yantra.search.labels.priceRange', 'Price Range')}
                 </label>
                 <Select value={priceRange} onValueChange={setPriceRange}>
                   <SelectTrigger className="py-3 border-2 border-orange-200 focus:border-orange-400 rounded-xl">
-                    <SelectValue placeholder="Select Price" />
+                    <SelectValue placeholder={t('yantra.search.placeholders.priceRange', 'Select Price')} />
                   </SelectTrigger>
                   <SelectContent>
                     {priceRanges.map((range) => (
@@ -318,25 +317,25 @@ export default function Yantra() {
               <div className="flex items-end">
                 <Button className="w-full py-3 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all">
                   <Search className="w-5 h-5 mr-2" />
-                  Search Now
+                  {t('yantra.search.button', 'Search Now')}
                 </Button>
               </div>
             </div>
             
             {/* Quick Filter Tags */}
             <div className="flex flex-wrap justify-center gap-3">
-              <div className="text-sm text-gray-600 mr-4">Quick Filters:</div>
+              <div className="text-sm text-gray-600 mr-4">{t('yantra.search.quickFilters', 'Quick Filters:')}</div>
               <button className="px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm hover:bg-orange-200 transition-colors">
-                ✨ Most Popular
+                {t('yantra.search.tags.popular', '✨ Most Popular')}
               </button>
               <button className="px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm hover:bg-green-200 transition-colors">
-                🏆 Energized
+                {t('yantra.search.tags.energized', '🏆 Energized')}
               </button>
               <button className="px-4 py-2 bg-yellow-100 text-yellow-700 rounded-full text-sm hover:bg-yellow-200 transition-colors">
-                💎 Premium
+                {t('yantra.search.tags.premium', '💎 Premium')}
               </button>
               <button className="px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm hover:bg-purple-200 transition-colors">
-                🔯 New Arrivals
+                {t('yantra.search.tags.newArrivals', '🔯 New Arrivals')}
               </button>
             </div>
           </div>
@@ -347,15 +346,15 @@ export default function Yantra() {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Available Yantra Collection</h2>
-            <p className="text-gray-600">{loading ? 'Loading...' : `${filteredYantras.length} yantras found`}</p>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">{t('yantra.collection.title', 'Available Yantra Collection')}</h2>
+            <p className="text-gray-600">{loading ? t('yantra.labels.loading', 'Loading...') : `${filteredYantras.length} ${t('yantra.collection.count', 'yantras found')}`}</p>
           </div>
           
           {/* Loading State */}
           {loading && (
             <div className="flex justify-center items-center py-12">
               <Loader2 className="h-8 w-8 animate-spin text-orange-600" />
-              <span className="ml-2 text-gray-600">Loading yantras...</span>
+              <span className="ml-2 text-gray-600">{t('yantra.collection.loading', 'Loading yantras...')}</span>
             </div>
           )}
 
@@ -363,13 +362,13 @@ export default function Yantra() {
           {error && (
             <div className="text-center py-12">
               <div className="bg-red-50 border border-red-200 text-red-700 px-6 py-4 rounded-lg max-w-md mx-auto">
-                <p className="font-semibold">Error Loading Yantras</p>
+                <p className="font-semibold">{t('yantra.collection.error.title', 'Error Loading Yantras')}</p>
                 <p className="text-sm mt-1">{error}</p>
                 <Button 
                   onClick={fetchYantras}
                   className="mt-3 bg-red-600 hover:bg-red-700 text-white"
                 >
-                  Try Again
+                  {t('yantra.collection.error.retry', 'Try Again')}
                 </Button>
               </div>
             </div>
@@ -382,7 +381,7 @@ export default function Yantra() {
               <Card key={yantra._id} className="group relative overflow-hidden hover:shadow-2xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-orange-50">
                 {yantra.isEnergized && (
                   <Badge className="absolute top-3 left-3 z-10 bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-lg">
-                    ⚡ Energized
+                    ⚡ {t('yantra.hero.features.energized', 'Energized')}
                   </Badge>
                 )}
                 
@@ -441,11 +440,11 @@ export default function Yantra() {
                   {/* Material and Size */}
                   <div className="grid grid-cols-2 gap-2 mb-4 text-sm">
                     <div className="bg-gray-50 px-3 py-2 rounded-lg text-center">
-                      <div className="text-xs text-gray-600">Material</div>
+                      <div className="text-xs text-gray-600">{t('yantra.labels.material', 'Material')}</div>
                       <div className="font-semibold text-sm">{yantra.material}</div>
                     </div>
                     <div className="bg-gray-50 px-3 py-2 rounded-lg text-center">
-                      <div className="text-xs text-gray-600">Size</div>
+                      <div className="text-xs text-gray-600">{t('yantra.labels.size', 'Size')}</div>
                       <div className="font-semibold text-sm">{yantra.size}</div>
                     </div>
                   </div>
@@ -481,7 +480,7 @@ export default function Yantra() {
                       }}
                     >
                       <ShoppingCart className="w-4 h-4 mr-2" />
-                      Buy Now
+                      {t('yantra.labels.buyNow', 'Buy Now')}
                     </Button>
                   </div>
                 </CardContent>
@@ -493,7 +492,7 @@ export default function Yantra() {
           {/* No Results State */}
           {!loading && !error && filteredYantras.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-500 text-lg">No yantras found.</p>
+              <p className="text-gray-500 text-lg">{t('yantra.collection.empty', 'No yantras found.')}</p>
               <Button 
                 variant="outline" 
                 className="mt-4"
@@ -503,7 +502,7 @@ export default function Yantra() {
                   setSearchTerm("")
                 }}
               >
-                Clear Filters
+                {t('yantra.collection.clearFilters', 'Clear Filters')}
               </Button>
             </div>
           )}
@@ -514,15 +513,15 @@ export default function Yantra() {
       <section className="py-16 bg-gradient-to-r from-orange-50 to-red-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Why Choose Our Yantras?</h2>
-            <p className="text-lg text-gray-600">Authentic and energized yantras</p>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">{t('yantra.features.title', 'Why Choose Our Yantras?')}</h2>
+            <p className="text-lg text-gray-600">{t('yantra.features.subtitle', 'Authentic and energized yantras')}</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: "✅", title: "Energized", desc: "All yantras are properly energized", color: "from-green-500 to-emerald-500" },
-              { icon: "🌍", title: "Authentic", desc: "Made according to ancient scriptures", color: "from-blue-500 to-cyan-500" },
-              { icon: "📱", title: "Expert Guidance", desc: "Free consultation on selection", color: "from-orange-500 to-red-500" }
+              { icon: "✅", title: t('yantra.features.items.energized.title', 'Energized'), desc: t('yantra.features.items.energized.desc', 'All yantras are properly energized'), color: "from-green-500 to-emerald-500" },
+              { icon: "🌍", title: t('yantra.features.items.authentic.title', 'Authentic'), desc: t('yantra.features.items.authentic.desc', 'Made according to ancient scriptures'), color: "from-blue-500 to-cyan-500" },
+              { icon: "📱", title: t('yantra.features.items.guidance.title', 'Expert Guidance'), desc: t('yantra.features.items.guidance.desc', 'Free consultation on selection'), color: "from-orange-500 to-red-500" }
             ].map((feature, index) => (
               <Card key={index} className="text-center hover:shadow-2xl transition-all duration-300 border-0 bg-white/80 backdrop-blur-sm hover:bg-white">
                 <CardContent className="p-6">
@@ -542,17 +541,17 @@ export default function Yantra() {
       <section className="py-16 bg-gradient-to-r from-orange-600 to-red-500 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Enhance Your Life with Sacred Yantras
+            {t('yantra.cta.title', 'Enhance Your Life with Sacred Yantras')}
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Get authentic and energized yantras for your needs
+            {t('yantra.cta.subtitle', 'Get authentic and energized yantras for your needs')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="bg-white text-orange-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
-              Explore Yantras
+              {t('yantra.cta.explore', 'Explore Yantras')}
             </Button>
             <Button variant="outline" className="border-white text-orange-800 px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-orange-600">
-              Call: +91 9773380099
+              {t('yantra.cta.call', 'Call: +91 9773380099')}
             </Button>
           </div>
         </div>
@@ -564,7 +563,7 @@ export default function Yantra() {
           <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             <CardHeader className="bg-gradient-to-r from-orange-600 to-red-600 text-white">
               <CardTitle className="text-2xl flex items-center justify-between">
-                🛒 Checkout - {selectedProduct.name}
+                {t('yantra.checkout.title', '🛒 Checkout - {{productName}}').replace('{{productName}}', selectedProduct.name)}""
                 <Button 
                   variant="ghost" 
                   size="sm" 
@@ -581,18 +580,18 @@ export default function Yantra() {
             <CardContent className="p-6">
               {/* Order Summary */}
               <div className="bg-orange-50 p-4 rounded-lg mb-6 border border-orange-200">
-                <h3 className="font-bold text-lg text-orange-800 mb-2">📋 Order Summary</h3>
+                <h3 className="font-bold text-lg text-orange-800 mb-2">{t('yantra.checkout.orderSummary', '📋 Order Summary')}</h3>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span>Product:</span>
+                    <span>{t('yantra.checkout.product', 'Product:')}</span>
                     <span className="font-medium">{selectedProduct.name}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Deity:</span>
+                    <span>{t('yantra.checkout.deity', 'Deity:')}</span>
                     <span className="font-medium">{selectedProduct.deity}</span>
                   </div>
                   <div className="flex justify-between text-lg font-bold text-orange-600 pt-2 border-t">
-                    <span>Total Amount:</span>
+                    <span>{t('yantra.checkout.totalAmount', 'Total Amount:')}</span>
                     <span>₹{selectedProduct.price.toLocaleString()}</span>
                   </div>
                 </div>
@@ -601,14 +600,14 @@ export default function Yantra() {
               {/* Checkout Form */}
               <form onSubmit={handleCheckoutSubmit} className="space-y-4">
                 <div className="text-center mb-6">
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">📝 Delivery Information</h3>
-                  <p className="text-gray-600">Please fill in your details for delivery</p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">{t('yantra.checkout.deliveryInfo', '📝 Delivery Information')}</h3>
+                  <p className="text-gray-600">{t('yantra.checkout.deliveryDesc', 'Please fill in your details for delivery')}</p>
                 </div>
 
                 {/* Fixed Product Name Field */}
                 <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
                   <label className="block text-sm font-medium text-orange-800 mb-2">
-                    🛍️ Product Name
+                    {t('yantra.checkout.productName', '🛍️ Product Name')}
                   </label>
                   <Input
                     type="text"
@@ -622,7 +621,7 @@ export default function Yantra() {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      👤 Full Name *
+                      {t('yantra.checkout.fullName', '👤 Full Name *')}
                     </label>
                     <Input
                       type="text"
@@ -636,7 +635,7 @@ export default function Yantra() {
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      📱 Mobile Number *
+                      {t('yantra.checkout.mobile', '📱 Mobile Number *')}
                     </label>
                     <Input
                       type="tel"
@@ -652,7 +651,7 @@ export default function Yantra() {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      📞 Alternative Mobile
+                      {t('yantra.checkout.alternativeMobile', '📞 Alternative Mobile')}
                     </label>
                     <Input
                       type="tel"
@@ -665,7 +664,7 @@ export default function Yantra() {
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      📮 PIN Code *
+                      {t('yantra.checkout.pincode', '📮 PIN Code *')}
                     </label>
                     <Input
                       type="text"
@@ -680,7 +679,7 @@ export default function Yantra() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    🏠 Complete Address *
+                    {t('yantra.checkout.address', '🏠 Complete Address *')}
                   </label>
                   <Textarea
                     required
@@ -695,7 +694,7 @@ export default function Yantra() {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      🏙️ City *
+                      {t('yantra.checkout.city', '🏙️ City *')}
                     </label>
                     <Input
                       type="text"
@@ -709,7 +708,7 @@ export default function Yantra() {
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      🗺️ State *
+                      {t('yantra.checkout.state', '🗺️ State *')}
                     </label>
                     <Input
                       type="text"
@@ -724,7 +723,7 @@ export default function Yantra() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    📝 Special Instructions (Optional)
+                    {t('yantra.checkout.specialInstructions', '📝 Special Instructions (Optional)')}
                   </label>
                   <Textarea
                     value={checkoutData.specialInstructions}
@@ -737,13 +736,13 @@ export default function Yantra() {
 
                 {/* Important Notes */}
                 <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                  <h4 className="font-bold text-blue-800 mb-2">📌 Important Information</h4>
+                  <h4 className="font-bold text-blue-800 mb-2">{t('yantra.checkout.importantInfo', '📌 Important Information')}</h4>
                   <div className="text-sm text-blue-700 space-y-1">
-                    <p>• Free shipping across India</p>
-                    <p>• Delivery within 5-7 working days</p>
-                    <p>• COD available (Cash on Delivery)</p>
-                    <p>• Expert installation guidance included</p>
-                    <p>• All yantras are properly energized</p>
+                    <p>• {t('yantra.checkout.freeShipping', 'Free shipping across India')}</p>
+                    <p>• {t('yantra.checkout.deliveryTime', 'Delivery within 5-7 working days')}</p>
+                    <p>• {t('yantra.checkout.codAvailable', 'COD available (Cash on Delivery)')}</p>
+                    <p>• {t('yantra.checkout.installationGuidance', 'Expert installation guidance included')}</p>
+                    <p>• {t('yantra.checkout.allEnergized', 'All yantras are properly energized')}</p>
                   </div>
                 </div>
 
@@ -758,13 +757,13 @@ export default function Yantra() {
                       setSelectedProduct(null)
                     }}
                   >
-                    ← Back
+                    {t('yantra.checkout.back', '← Back')}
                   </Button>
                   <Button 
                     type="submit"
                     className="flex-1 bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-semibold py-3"
                   >
-                    💳 Proceed to Payment
+                    {t('yantra.checkout.proceedToPayment', '💳 Proceed to Payment')}
                   </Button>
                 </div>
               </form>

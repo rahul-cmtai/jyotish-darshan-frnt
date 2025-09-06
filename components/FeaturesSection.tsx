@@ -81,7 +81,6 @@ const FeaturesSection = () => {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              variants={itemVariants}
               whileHover={{
                 y: -10,
                 transition: { duration: 0.2 },

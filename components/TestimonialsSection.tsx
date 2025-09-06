@@ -1,6 +1,7 @@
 "use client"
 
 import { Star, Quote } from "lucide-react"
+import { useTranslation } from '@/contexts/TranslationContext'
 
 // Testimonial data
 const testimonials = [
@@ -61,6 +62,8 @@ const testimonials = [
 ]
 
 export default function TestimonialsSection() {
+  const { t } = useTranslation()
+
   return (
     <section className="jyoti-cream-bg py-16 sm:py-20 lg:py-24 relative overflow-hidden">
       {/* Background decorative elements */}
@@ -74,10 +77,10 @@ export default function TestimonialsSection() {
         {/* Section Header */}
         <div className="text-center mb-16 px-4">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-            What Our Clients Say
+            {t('home.testimonials.title', 'What Our Clients Say')}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover how Jyotish Lok has helped thousands of people find clarity and transform their lives
+            {t('home.testimonials.subtitle', 'Discover how Jyotish Lok has helped thousands of people find clarity and transform their lives')}
           </p>
         </div>
 
@@ -241,10 +244,10 @@ export default function TestimonialsSection() {
         {/* Call to Action */}
         <div className="text-center mt-16 px-4">
           <p className="text-gray-600 mb-6">
-            Ready to discover what the stars have in store for you?
+            {t('home.testimonials.cta.question', 'Ready to discover what the stars have in store for you?')}
           </p>
           <button className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-            Get Your Free Consultation
+            {t('home.testimonials.cta.button', 'Get Your Free Consultation')}
           </button>
         </div>
       </div>
