@@ -168,7 +168,8 @@ export default function Posts() {
   const fetchBlogs = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:5000/api/blogs');
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${apiUrl}/api/blogs`);
       if (response.ok) {
         const data = await response.json();
         console.log('Dashboard: Raw API response:', data);
@@ -284,7 +285,8 @@ export default function Posts() {
       });
 
       console.log('Sending request to backend...');
-      const response = await fetch('http://localhost:5000/api/blogs/create', {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${apiUrl}/api/blogs/create`, {
         method: 'POST',
         body: formDataToSend,
       });
@@ -426,7 +428,8 @@ export default function Posts() {
         published: formData.published
       });
       
-      const response = await fetch(`http://localhost:5000/api/blogs/${id}`, {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${apiUrl}/api/blogs/${id}`, {
         method: 'PUT',
         body: formDataToSend,
       });
@@ -461,7 +464,8 @@ export default function Posts() {
     try {
       setLoading(true);
       
-      const response = await fetch(`http://localhost:5000/api/blogs/${id}`, {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${apiUrl}/api/blogs/${id}`, {
         method: 'DELETE',
       });
 
@@ -593,7 +597,8 @@ export default function Posts() {
   // Test backend connectivity
   const testBackendConnection = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/blogs', {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${apiUrl}/api/blogs`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

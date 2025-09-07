@@ -2,12 +2,12 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Eye, EyeOff, Lock, User, AlertCircle } from 'lucide-react';
+import { Eye, EyeOff, Lock, Mail, AlertCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function Login() {
   const [formData, setFormData] = useState({
-    username: '',
+    email: '',
     password: ''
   });
   const [showPassword, setShowPassword] = useState(false);
@@ -30,20 +30,24 @@ export default function Login() {
     setIsLoading(true);
     setError('');
 
-    // Simulate API call
     try {
-      // Replace this with your actual authentication logic
+      // Get credentials from environment variables with fallbacks
+      const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@jyotishlok.com';
+      const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'admin123';
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      
+      // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Mock validation - replace with real validation
-      if (formData.username === 'admin' && formData.password === 'admin123') {
+      // Validate credentials against environment variables
+      if (formData.email === adminEmail && formData.password === adminPassword) {
         // Set authentication cookie
         document.cookie = "isLoggedIn=true; path=/; max-age=3600"; // 1 hour
         
         // Success - redirect to dashboard
         router.push('/dashboard');
       } else {
-        setError('Invalid username or password');
+        setError('Invalid email or password');
       }
     } catch (err) {
       setError('An error occurred. Please try again.');
@@ -113,23 +117,23 @@ export default function Login() {
           className="bg-white rounded-2xl shadow-xl border border-gray-200 p-8"
         >
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Username Field */}
+            {/* Email Field */}
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
-                Username
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                Email Address
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <User className="h-5 w-5 text-gray-400" />
+                  <Mail className="h-5 w-5 text-gray-400" />
                 </div>
                 <input
-                  type="text"
-                  id="username"
-                  name="username"
-                  value={formData.username}
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
                   onChange={handleInputChange}
                   className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors"
-                  placeholder="Enter your username"
+                  placeholder="Enter your email address"
                   required
                 />
               </div>

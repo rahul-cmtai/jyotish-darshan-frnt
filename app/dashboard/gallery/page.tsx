@@ -126,7 +126,8 @@ export default function Gallery() {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('http://localhost:5000/api/gallery/');
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${apiUrl}/api/gallery/`);
       if (!response.ok) {
         throw new Error('Failed to fetch gallery');
       }
@@ -183,7 +184,8 @@ export default function Gallery() {
         formData.append('thumbnail', thumbnailFile);
       }
       
-      const response = await fetch('http://localhost:5000/api/gallery/create', {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${apiUrl}/api/gallery/create`, {
         method: 'POST',
         body: formData, // Send FormData instead of JSON
       });
@@ -232,7 +234,8 @@ export default function Gallery() {
         formData.append('thumbnail', thumbnailFile);
       }
       
-      const response = await fetch(`http://localhost:5000/api/gallery/${id}`, {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${apiUrl}/api/gallery/${id}`, {
         method: 'PUT',
         body: formData, // Send FormData instead of JSON
       });
@@ -260,7 +263,8 @@ export default function Gallery() {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`http://localhost:5000/api/gallery/${id}`, {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${apiUrl}/api/gallery/${id}`, {
         method: 'DELETE',
       });
       
