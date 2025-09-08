@@ -32,9 +32,9 @@ export default function Login() {
 
     try {
       // Get credentials from environment variables with fallbacks
-      const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'admin@jyotishlok.com';
-      const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'admin123';
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
+      const adminPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
       
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000));

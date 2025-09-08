@@ -40,7 +40,7 @@ export default function Gallery() {
     try {
       setLoading(true)
       setError(null)
-      const response = await fetch('http://localhost:5000/api/gallery')
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/gallery`)
       if (!response.ok) throw new Error('Failed to fetch media')
       const data = await response.json()
       

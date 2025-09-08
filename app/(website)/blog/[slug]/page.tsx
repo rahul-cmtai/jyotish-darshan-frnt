@@ -58,7 +58,7 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
     try {
       setLoading(true)
       
-      const response = await fetch(`http://localhost:5000/api/blogs/slug/${slug}`)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/blogs/slug/${slug}`)
       
       if (response.ok) {
         const data = await response.json()
@@ -99,7 +99,7 @@ export default function BlogDetailPage({ params }: BlogDetailPageProps) {
   // Fetch related posts
   const fetchRelatedPosts = async (category: string, currentPostId: string) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/blogs?category=${category}&limit=3`)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/blogs?category=${category}&limit=3`)
       
       if (response.ok) {
         const data = await response.json()

@@ -143,7 +143,7 @@ export default function LeadsPage() {
   const fetchLeads = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:5000/api/contact/find?limit=10000');
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/contact/find?limit=10000`);
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -180,7 +180,7 @@ export default function LeadsPage() {
         responseNotes: formData.responseNotes || undefined
       };
       
-      const response = await fetch('http://localhost:5000/api/contact/submit', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/contact/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -217,7 +217,7 @@ export default function LeadsPage() {
         responseNotes: formData.responseNotes || undefined
       };
       
-      const response = await fetch(`http://localhost:5000/api/contact/update/${selectedLead._id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/contact/update/${selectedLead._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -247,7 +247,7 @@ export default function LeadsPage() {
 
   const handleDeleteLead = async (id: string) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/contact/delete/${id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/contact/delete/${id}`, {
         method: 'DELETE',
       });
 
@@ -271,7 +271,7 @@ export default function LeadsPage() {
 
   const toggleReadStatus = async (lead: Lead) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/contact/update/${lead._id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/contact/update/${lead._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -347,7 +347,7 @@ export default function LeadsPage() {
     // Automatically mark as read when viewed
     if (!lead.isRead) {
       try {
-        const response = await fetch(`http://localhost:5000/api/contact/update/${lead._id}`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/contact/update/${lead._id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',

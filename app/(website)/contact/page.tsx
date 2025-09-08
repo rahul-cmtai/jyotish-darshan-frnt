@@ -125,7 +125,7 @@ export default function Contact() {
       // Debug: Log what we're sending
       console.log('Sending form data:', formData)
       
-      const response = await fetch('http://localhost:5000/api/contact/submit', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/contact/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
